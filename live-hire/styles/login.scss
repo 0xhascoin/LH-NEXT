@@ -1,0 +1,129 @@
+.login-page {
+    border: 1px solid black;
+    height: 100vh;
+    // margin: 1px;
+
+    .login-container.columns {
+        border: 1px solid black;
+        height: 100%;
+        margin: 0;
+
+        .left {
+            // border: 1px solid black;
+
+            .go-back {
+                // border: 1px solid black;
+                margin-left: 1rem;
+
+                a {
+                    font-size: 1rem;
+                    color: black;
+                    font-weight: 500;
+                    text-decoration: underline;
+                }
+            }
+
+            .main {
+                // border: 1px solid black;
+                margin: auto;
+                width: 95%;
+                margin-top: 15%;
+                text-align: center;
+
+                .header {
+                    // border: 1px solid black;
+
+                    .header-title {
+                        color: black;
+                        font-size: 2rem;
+                        font-weight: 600;
+                    }
+
+                    .header-subtitle {
+                        color: gray;
+                        font-weight: 400;
+                        font-size: 1rem;
+                        margin-top: 10px;
+                    }
+
+                    .button {
+                        margin: auto;
+                        width: 80%;
+                        display: flex;
+                        align-items: center;
+                        // font-size: 1.2rem;
+                        margin-top: 20px;
+                        // padding: 1.1rem;
+                        // border-radius: 8px;
+                        margin-top: 1.5rem;
+                    }
+
+                    .or {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        // border: 1px solid black;
+                        margin: auto;
+                        margin-top: 1.2rem;
+                        width: 80%;
+
+                        p {
+
+                            margin-right: 10px;
+                            margin-left: 10px;
+                            color: gray;
+                        }
+
+                        hr {
+                            // border: 2px solid red;
+                            width: 50%;
+                        }
+                    }
+                }
+
+                .form {
+                    // border: 1px solid black;
+                    margin: auto;
+                    width: 80%;
+                    margin-top: 2rem;
+
+                    .field {
+                        // border: 1px solid black;
+                        margin-bottom: 20px;
+
+                        .input {
+                            // border: none;
+                            box-shadow: none;
+                            // border-radius: 0;
+                            border: 2px solid #e9ecef;
+                        }
+
+                        .button {
+                            background-color: black;
+                            color: white;
+                            width: 100%;
+                            margin-top: 20px;
+                        }
+                    }
+                }
+
+                .signup {
+                    // border: 1px solid black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    a {
+                        font-weight: 500;
+                        color: black;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+        .right {
+            background-color: black;
+        }
+    }
+}

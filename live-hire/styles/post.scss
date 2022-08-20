@@ -1,0 +1,77 @@
+
+.post-page {
+    background-color: rgb(251, 251, 251);
+}
+
+.post-container {
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 4%;
+    width: 80%;
+    padding: 3rem;
+    background-color: white;
+
+    .heading {
+        // border: 1px solid black;
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: black;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1rem;
+            color: royalblue;
+            margin-bottom: 7px;
+            text-transform: none;
+        }
+
+        p {
+            font-size: .7rem;
+            color: rgb(72, 72, 72);
+            text-transform: none;
+        }
+    }
+
+    .form {
+        padding: 2rem;
+        padding-left: 0;
+
+        .field {
+            // border: 1px solid black;
+
+            &.logo-field {
+                border: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .label {
+                font-size: .9rem;
+                color: black;
+                font-weight: 500;
+            }
+
+            .input, .textarea {
+                box-shadow: none;
+                border-radius: 6px;
+                font-size: .9rem;
+            }
+
+            .file-cta {
+                // border: 1px solid black;
+                background-color: white;
+                border-radius: 0;
+            }
+            svg {
+                font-size: 2rem;
+                color: black;
+            }
+        }
+    }
+
+}
