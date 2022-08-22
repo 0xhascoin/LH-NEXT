@@ -1,8 +1,11 @@
 import 'bulma';
-import '../styles/globals.css';
+import '../styles/globals.scss';
+import '../styles/hero.scss';
 import '../styles/header.scss';
 import '../styles/login.scss';
 import '../styles/post.scss';
+import '../styles/jobPreviewModal.scss';
+import '../styles/postJobErrorModal.scss';
 
 
 import AuthStateChanged from '../auth/AuthStateChanged'

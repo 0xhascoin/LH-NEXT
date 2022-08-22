@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../components/loading';
 import { auth } from '../firebaseConfig';
 import useAuth from '../hook/auth';
 
@@ -14,7 +15,7 @@ const AuthStateChanged = ({ children}) => {
     }, []);
 
     if(loading) {
-        return <h2>Loading...</h2>;
+        return <Loading />;
     }
 
     return children;

@@ -1,7 +1,7 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { AuthService } from '../auth/AuthService';
-import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from '../firebaseConfig';
+import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 const authContext = createContext();
 
@@ -11,50 +11,64 @@ export default function useAuth() {
 
 export function AuthProvider(props) {
     const [user, setUser] = useState(null);
+    const [usersJobs, setUsersJobs] = useState([]);
     const [error, setError] = useState("");
 
     const loginWithGoogle = async () => {
         const { user, error } = await AuthService.loginWithGoogle();
-        const data = {
-            userId: user.uid,
-            userName: user.displayName,
-            email: user.email
+        console.log("User: ", user)
+        console.log("Error: ", error)
+        if (error === "" || error === undefined) {
+            const data = {
+                userId: user.uid,
+                userName: user.displayName,
+                email: user.email
+            }
+
+            await addNewUserToDB(user, data);
+
+            setUser(user ?? null);
+            setError(error ?? "");
+            await getUsersJobs(user)
         }
-
-        await addNewUserToDB(user, data);
-
-        setUser(user ?? null);
-        setError(error ?? "");
-    };
+    }
 
     const loginWithEmailAndPassword = async (email, password) => {
-        // console.log("USER: ", user);
         const { user, error } = await AuthService.loginWithEmailAndPassword(email, password);
-        const data = {
-            userId: user.uid,
-            userName: user.email,
-            email: user.email
+        console.log("USER: ", user);
+        console.log("Error: ", error);
+        if (error === "" || error === undefined) {
+            const data = {
+                userId: user.uid,
+                userName: user.email,
+                email: user.email
+            }
+            await addNewUserToDB(user, data);
+            setUser(user ?? null);
+            setError(error ?? "");
+            await getUsersJobs(user)
         }
-        await addNewUserToDB(user, data);
-        setUser(user ?? null);
-        setError(error ?? "");
     }
 
     const signupWithEmailAndPassword = async (username, email, password) => {
         const { user, error } = await AuthService.signupWithEmailAndPassword(email, password);
-        const data = {
-            userId: user.uid,
-            userName: username,
-            email: user.email
+        if (error === ""  || error === undefined) {
+            const data = {
+                userId: user.uid,
+                userName: username,
+                email: user.email
+            }
+            await addNewUserToDB(user, data);
+            setUser(user ?? null);
+            setError(error ?? "");
+            await getUsersJobs(user)
         }
-        await addNewUserToDB(user, data);
-        setUser(user ?? null);
-        setError(error ?? "");
     }
 
     const logout = async () => {
         await AuthService.logout();
         setUser(null);
+        setUsersJobs([])
     }
 
     const addNewUserToDB = async (user, data) => {
@@ -69,7 +83,31 @@ export function AuthProvider(props) {
         }
     }
 
-    const value = { user, error, loginWithGoogle, logout, setUser, loginWithEmailAndPassword, signupWithEmailAndPassword };
+    const getUsersJobs = async (user) => {
+        const userRef = doc(db, "users", user.uid);
+        const userData = await getDoc(userRef);
+        const { jobs } = userData.data();
+        const jobsArr = [];
+
+        if (jobs !== undefined) {
+            for (let i = 0; i < jobs.length; i++) {
+                const jobRef = doc(db, "jobs", jobs[i]);
+                const jobData = await getDoc(jobRef);
+                // jobsArr.push(jobData.data());
+                console.log(jobData.data())
+                jobsArr.push(jobData.data());
+            }
+
+            console.log(jobsArr);
+            setUsersJobs(jobsArr)
+        }
+
+        console.log("usersJobs: ", jobsArr)
+
+    }
+
+
+    const value = { user, getUsersJobs, usersJobs, error, loginWithGoogle, logout, setUser, loginWithEmailAndPassword, signupWithEmailAndPassword };
 
     return <authContext.Provider value={value} {...props} />
 

@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/header';
+import JobPreviewModal from '../components/jobPreviewModal';
 import { withProtected } from '../hook/route';
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { db, storage } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import Image from 'next/image';
 import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import PostJobErrorModal from '../components/postJobErrorModal';
 
 const Post = ({ auth }) => {
-    const [companyName, setCompanyName] = useState("");
-    const [url, setUrl] = useState(null);
-    const [companyDescription, setCompanyDescription] = useState("");
+    const [job, setJob] = useState({
+        companyName: "",
+        companyDescription: "",
+        companyLogo: "",
+        jobTitle: "",
+        jobLevel: "",
+        jobType: "",
+        jobDescription: "",
+        currency: "",
+        jobSalary: 0,
+        interviewDate: "",
+        interviewTime: "",
+
+    })
     const [file, setFile] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [progress, setProgress] = useState(0);
     const [jobs, setJobs] = useState([]);
-    const { user } = auth;
+    const { user, usersJobs, getUsersJobs } = auth;
+
+    const [showPreview, setShowPreview] = useState(false);
+    const [postJobError, setPostJobError] = useState(false);
 
 
     const fileUploaded = (event) => {
@@ -46,7 +61,7 @@ const Post = ({ auth }) => {
                 // Handle successful uploads on complete
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    setUrl(downloadURL)
+                    setJob({ ...job, companyLogo: downloadURL })
                     console.log('File available at', downloadURL);
                 });
             }
@@ -55,14 +70,25 @@ const Post = ({ auth }) => {
 
     const postJob = async () => {
         // Check the fields are not empty.
-        if (companyName !== "" && companyDescription !== "" && url) {
+        if (job.companyName.length > 3 && job.companyDescription.length > 50 && job.companyLogo !== "" &&
+            job.jobTitle.length > 5 && job.jobLevel !== "" && job.jobType !== "" &&
+            job.jobDescription.length > 100 && job.currency !== "" && job.jobSalary > 0 &&
+            job.interviewDate !== "" && job.interviewTime !== "") {
 
             // Create the job object you want to add to the array
             const data = {
-                companyName: companyName,
-                companyDescription: companyDescription,
-                companyLogo: url,
-                postedBy: user.uid
+                companyName: job.companyName,
+                companyDescription: job.companyDescription,
+                companyLogo: job.companyLogo,
+                postedBy: user.uid,
+                jobTitle: job.jobTitle,
+                jobLevel: job.jobLevel,
+                jobType: job.jobType,
+                jobDescription: job.jobDescription,
+                currency: job.currency,
+                jobSalary: job.jobSalary,
+                interviewDate: job.interviewDate,
+                interviewTime: job.interviewTime
             }
 
             // Get the ref of the job you are adding & create it in firebase
@@ -77,56 +103,41 @@ const Post = ({ auth }) => {
                 jobs: arrayUnion(companyRef.id)
             });
 
+            await getUsersJobs(user);
+
             // Reset all the form fields
             setSubmitted(true)
             resetFields();
 
         } else {
             // Fields are not enterred.
-            alert("Complete all fields.")
+            setPostJobError(true);
         }
     }
 
-    useEffect(() => {
-        getUsersJobs();
-    }, [])
 
-    const getUsersJobs = async () => {
-        const userRef = doc(db, "users", user.uid);
-        const userData = await getDoc(userRef);
-        const { jobs } = userData.data();
-        const jobsArr = [];
-
-        for(let i=0; i < jobs.length; i++) {
-            const jobRef = doc(db, "jobs", jobs[i]);
-            const jobData = await getDoc(jobRef);
-            // jobsArr.push(jobData.data());
-            console.log(jobData.data())
-            jobsArr.push(jobData.data());
-        }
-
-        console.log(jobsArr);
-        setJobs(jobsArr)
-
-
-    }
 
     const resetFields = () => {
-        setCompanyName("");
-        setCompanyDescription("");
+        setJob({
+            companyName: "",
+            companyDescription: "",
+            companyLogo: "",
+            jobTitle: "",
+            jobLevel: "",
+            jobType: "",
+            jobDescription: "",
+            currency: "",
+            jobSalary: 0,
+            interviewDate: "",
+            interviewTime: "",
+        })
         setProgress(0);
-        setUrl(null);
         setFile("");
     }
 
     return (
         <div className="post-page">
             <Header />
-            {jobs.length ? jobs.map((job) => (
-                <img src={job.companyLogo} height={96} width={96} />
-            )) : (
-                <h2>Loading...</h2>
-            )}
             <div className="post-container">
                 <div className="heading">
                     <h3>Create a job listing.</h3>
@@ -138,13 +149,13 @@ const Post = ({ auth }) => {
                     <div class="field">
                         <label class="label">Company Name</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Your company name" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+                            <input class="input" type="text" placeholder="Your company name" value={job.companyName} onChange={(e) => setJob({ ...job, companyName: e.target.value })} />
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Company Description</label>
                         <div class="control">
-                            <textarea className="textarea" cols="30" rows="7" placeholder='Write a short description about the culture of your company' value={companyDescription} onChange={(e) => setCompanyDescription(e.target.value)}></textarea>
+                            <textarea className="textarea" cols="30" rows="7" placeholder='Write a short description about the culture of your company' value={job.companyDescription} onChange={(e) => setJob({ ...job, companyDescription: e.target.value })}></textarea>
                         </div>
                     </div>
                     <div class="field logo-field">
@@ -170,19 +181,139 @@ const Post = ({ auth }) => {
                             {progress == 100 && (
                                 <div className="image-container has-text-centered">
                                     <h2>Your company logo</h2>
-                                    <img src={url} height={96} width={96} />
+                                    <img src={job.companyLogo} height={96} width={96} />
                                 </div>
                             )}
                         </div>
                     </div>
-                    <div className="field">
+                    <div class="field">
+                        <label class="label">Job title</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Job title" value={job.jobTitle} onChange={(e) => setJob({ ...job, jobTitle: e.target.value })} />
+                        </div>
+                    </div>
+                    <div className="field double">
+                        <div className="job-type">
+                            <label className="label">
+                                Job Type
+                            </label>
+                            <div className="control">
+                                <div
+                                    className="select is-normal"
+                                >
+                                    <select
+                                        onChange={(e) =>
+                                            setJob({ ...job, jobType: e.target.value })
+                                        }
+                                        value={job.jobType}
+
+                                    >
+                                        <option value="">Select from dropdown</option>
+                                        <option value="Full Time">Full Time</option>
+                                        <option value="Part Time">Part Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="job-level">
+                            <label className="label">
+                                Job level
+                            </label>
+                            <div className="control">
+                                <div
+                                    className="select is-normal"
+                                >
+                                    <select
+                                        onChange={(e) =>
+                                            setJob({ ...job, jobLevel: e.target.value })
+                                        }
+                                        value={job.jobLevel}
+
+                                    >
+                                        <option value="">Select from dropdown</option>
+                                        <option value="Junior">Junior</option>
+                                        <option value="Mid">Mid-level</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Job Description</label>
+                        <div class="control">
+                            <textarea className="textarea" cols="30" rows="7" placeholder='Write a description about your requirements for this role' value={job.jobDescription} onChange={(e) => setJob({ ...job, jobDescription: e.target.value })}></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="heading mb-6">
+                        <h3>Compensation and Interview Details.</h3>
+                    </div>
+                    <div className="field double">
+                        <div className="job-type">
+                            <label className="label">
+                                Currency
+                            </label>
+                            <div className="control">
+                                <div
+                                    className="select is-normal"
+                                >
+                                    <select
+                                        onChange={(e) =>
+                                            setJob({ ...job, currency: e.target.value })
+                                        }
+                                        value={job.currency}
+
+                                    >
+                                        <option value="">Select currency from dropdown</option>
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="GBP">GBP</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="job-level">
+                            <label className="label">
+                                Job Salary
+                            </label>
+                            <div className="control">
+                                <input className="input" type="number" placeholder="30,000+" defaultValue={0} value={job.jobSalary} onChange={(e) => setJob({ ...job, jobSalary: e.target.value })} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="field double">
+                        <div className="job-type">
+                            <label className="label">
+                                Interview date
+                            </label>
+                            <div className="control">
+                                <input type="date" className="input" value={job.interviewDate} onChange={(e) => setJob({ ...job, interviewDate: e.target.value })} />
+                            </div>
+                        </div>
+
+                        <div className="job-level">
+                            <label className="label">
+                                Interview time
+                            </label>
+                            <div className="control">
+                                <input className="input" type="time" value={job.interviewTime} onChange={(e) => setJob({ ...job, interviewTime: e.target.value })} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="field buttons-field">
                         <div className="control">
-                            <button className="button" type="button" onClick={postJob}>Post job</button>
+                            <button className="button post" type="button" onClick={postJob}>Post job</button>
+                        </div>
+                        <div className="control">
+                            <button className="button preview" type="button" onClick={() => setShowPreview(true)}>Preview job</button>
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+            {postJobError && <PostJobErrorModal job={job} postJobError={postJobError} setPostJobError={setPostJobError} />}
+            {showPreview && <JobPreviewModal selectedJob={job} setShowPreview={setShowPreview} showPreview={showPreview} />}
+        </div >
     )
 }
 

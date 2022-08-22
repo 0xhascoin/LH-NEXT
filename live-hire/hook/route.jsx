@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import Loading from '../components/loading';
 import useAuth from './auth'
 
 export const withPublic = (Component) => {
@@ -9,7 +10,7 @@ export const withPublic = (Component) => {
 
         if(auth.user) {
             router.replace("/");
-            return <h2>Loading...</h2>;
+            return <Loading />;
         }
 
         return <Component auth={auth} {...props} />;
@@ -23,7 +24,7 @@ export const withProtected = (Component) => {
 
         if(!auth.user) {
             router.replace("/login");
-            return <h2>Loading...</h2>;
+            return <Loading />;
         }
 
         return <Component auth={auth} {...props} />;

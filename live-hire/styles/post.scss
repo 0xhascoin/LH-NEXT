@@ -1,15 +1,16 @@
-
 .post-page {
-    background-color: rgb(251, 251, 251);
+    background-color: rgb(248, 248, 248);
 }
 
 .post-container {
-    border: 1px solid black;
+    // border: 1px solid black;
     margin: auto;
     margin-top: 4%;
     width: 80%;
     padding: 3rem;
     background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 3px;
 
     .heading {
         // border: 1px solid black;
@@ -44,10 +45,63 @@
             // border: 1px solid black;
 
             &.logo-field {
-                border: 1px solid black;
+                // border: 1px solid black;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+            }
+
+            &.double {
+                // border: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .job-type,
+                .job-level {
+                    // margin-right: 30px;
+                    // border: 1px solid black;
+                    width: 50%;
+                }
+
+                .job-type {
+                    margin-right: 10px;
+                }
+
+                .control {
+                    // border: 1px solid black;
+
+                    .select {
+                        width: 100%;
+
+                        select {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &.buttons-field {
+                // border: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 4rem;
+
+                .control {
+                    // border: 1px solid black;
+                    width: 30%;
+
+                    .button {
+                        height: 50px;
+                        width: 100%;
+
+                        &.post {
+                            color: white;
+                            background-color: black;
+                        }
+                    }
+                }
             }
 
             .label {
@@ -56,7 +110,8 @@
                 font-weight: 500;
             }
 
-            .input, .textarea {
+            .input,
+            .textarea {
                 box-shadow: none;
                 border-radius: 6px;
                 font-size: .9rem;
@@ -67,6 +122,7 @@
                 background-color: white;
                 border-radius: 0;
             }
+
             svg {
                 font-size: 2rem;
                 color: black;
@@ -74,4 +130,16 @@
         }
     }
 
+}
+
+@media only screen and (max-width: 720px) {
+    .post-container {
+        width: 100% !important;
+        box-shadow: none !important;
+        // padding: 2rem !important;
+
+        .form {
+            padding: 0 !important;
+        }
+    }
 }
