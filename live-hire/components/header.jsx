@@ -23,10 +23,12 @@ const Header = () => {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="/">
+                <Link href={'/'}>
+                <a className="navbar-item">
                     <Image src={LH_LOGO} width={50} height={50} />
                     <span className="text">Live Hire</span>
                 </a>
+                </Link>
 
                 <a role="button" onClick={() => setShowMenu(!showMenu)} className={showMenu ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>

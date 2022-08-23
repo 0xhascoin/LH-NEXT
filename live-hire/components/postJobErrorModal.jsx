@@ -7,14 +7,6 @@ const PostJobErrorModal = ({ postJobError, setPostJobError, job }) => {
         setPostJobError(false);
     }
 
-    useEffect(() => {
-        if (job.companyName.length > 3 ) {
-            console.log("PASSED");
-        } else {
-            console.log("FAILED");
-        }
-    }, [])
-
 
     return (
         <div className="post-job-error-modal">
