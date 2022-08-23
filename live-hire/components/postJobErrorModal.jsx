@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 
 const PostJobErrorModal = ({ postJobError, setPostJobError, job }) => {
@@ -6,6 +6,14 @@ const PostJobErrorModal = ({ postJobError, setPostJobError, job }) => {
     const closeModal = () => {
         setPostJobError(false);
     }
+
+    useEffect(() => {
+        if (job.companyName.length > 3 ) {
+            console.log("PASSED");
+        } else {
+            console.log("FAILED");
+        }
+    }, [])
 
 
     return (
@@ -29,7 +37,7 @@ const PostJobErrorModal = ({ postJobError, setPostJobError, job }) => {
                             {job.jobLevel == "" && <li>You must select a Job Level from the dropdown</li>}
                             {job.jobDescription.length < 100 && <li>Job Description must be longer than 100 characters</li>}
                             {job.currency == "" && <li>You must select a currency from the dropdown</li>}
-                            {job.jobSalary < 0 && <li>Make sure to enter the salary for this role</li>}
+                            {job.jobSalary == "" && <li>Make sure to enter the salary for this role</li>}
                             {job.interviewDate == "" && <li>You must select a interview date</li>}
                             {job.interviewTime == "" && <li>You must select a interview time</li>}
                         </ul>

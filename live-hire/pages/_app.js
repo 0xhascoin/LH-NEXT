@@ -6,6 +6,7 @@ import '../styles/login.scss';
 import '../styles/post.scss';
 import '../styles/jobPreviewModal.scss';
 import '../styles/postJobErrorModal.scss';
+import '../styles/jobsList.scss';
 
 
 import AuthStateChanged from '../auth/AuthStateChanged'

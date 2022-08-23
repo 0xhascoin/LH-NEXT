@@ -7,6 +7,7 @@ import { db, storage } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import PostJobErrorModal from '../components/postJobErrorModal';
+import PostJobSuccessModal from '../components/postJobSuccessModal';
 
 const Post = ({ auth }) => {
     const [job, setJob] = useState({
@@ -18,7 +19,7 @@ const Post = ({ auth }) => {
         jobType: "",
         jobDescription: "",
         currency: "",
-        jobSalary: 0,
+        jobSalary: "",
         interviewDate: "",
         interviewTime: "",
 
@@ -68,12 +69,25 @@ const Post = ({ auth }) => {
         );
     }
 
+    const getDate = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+        return today
+    }
+
     const postJob = async () => {
         // Check the fields are not empty.
-        if (job.companyName.length > 3 && job.companyDescription.length > 50 && job.companyLogo !== "" &&
-            job.jobTitle.length > 5 && job.jobLevel !== "" && job.jobType !== "" &&
-            job.jobDescription.length > 100 && job.currency !== "" && job.jobSalary > 0 &&
+        console.log()
+        if (job.companyName.length >= 3 && job.companyDescription.length > 50 && job.companyLogo !== "" &&
+            job.jobTitle.length > 5 && job.jobLevel !== "" && job.jobType !== "" && job.jobSalary !== "" &&
+            job.jobDescription.length > 100 && job.currency !== "" &&
             job.interviewDate !== "" && job.interviewTime !== "") {
+
+            console.log("HERE1")
 
             // Create the job object you want to add to the array
             const data = {
@@ -88,26 +102,37 @@ const Post = ({ auth }) => {
                 currency: job.currency,
                 jobSalary: job.jobSalary,
                 interviewDate: job.interviewDate,
-                interviewTime: job.interviewTime
+                interviewTime: job.interviewTime,
+                postedDate: getDate()
             }
 
             // Get the ref of the job you are adding & create it in firebase
             const companyRef = doc(collection(db, "jobs"));
             await setDoc(companyRef, data);
 
+            console.log("HERE2")
+
             // Get the ref of the user in the users collection
             const userRef = doc(db, "users", user.uid);
+
+            console.log("HERE3")
 
             // Add the id of the company the user just posted to the jobs array field
             await updateDoc(userRef, {
                 jobs: arrayUnion(companyRef.id)
             });
 
+            console.log("HERE4")
+
             await getUsersJobs(user);
+
+            console.log("HERE5")
 
             // Reset all the form fields
             setSubmitted(true)
             resetFields();
+
+            console.log("HERE6")
 
         } else {
             // Fields are not enterred.
@@ -278,7 +303,7 @@ const Post = ({ auth }) => {
                                 Job Salary
                             </label>
                             <div className="control">
-                                <input className="input" type="number" placeholder="30,000+" defaultValue={0} value={job.jobSalary} onChange={(e) => setJob({ ...job, jobSalary: e.target.value })} />
+                                <input className="input" type="number" placeholder="30,000+" value={job.jobSalary} onChange={(e) => setJob({ ...job, jobSalary: e.target.value })} />
                             </div>
                         </div>
                     </div>
@@ -312,6 +337,7 @@ const Post = ({ auth }) => {
                 </form>
             </div >
             {postJobError && <PostJobErrorModal job={job} postJobError={postJobError} setPostJobError={setPostJobError} />}
+            {submitted && <PostJobSuccessModal job={job} submitted={submitted} setSubmitted={setSubmitted} />}
             {showPreview && <JobPreviewModal selectedJob={job} setShowPreview={setShowPreview} showPreview={showPreview} />}
         </div >
     )

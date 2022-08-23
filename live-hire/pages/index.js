@@ -4,6 +4,7 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import Hero from "../components/hero";
+import JobsList from "../components/jobsList";
 
 
 const Home = () => {
@@ -33,6 +34,10 @@ const Home = () => {
     <div className="home">
       <Header />
       <Hero />
+      {allJobs.length ? <JobsList allJobs={allJobs} /> : (
+        <h2>Loading...</h2>
+      )}
+      
     </div>
   )
 }
