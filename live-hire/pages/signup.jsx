@@ -33,8 +33,8 @@ const Signup = ({ auth }) => {
                             <h3 className="header-subtitle">
                             Welcome! please enter your details to create an account
                             </h3>
-                            <button class="button" onClick={loginWithGoogle}>
-                                <span class="icon">
+                            <button className="button" onClick={loginWithGoogle}>
+                                <span className="icon">
                                     <FcGoogle />
                                 </span>
                                 <span>Signup with Google</span>
@@ -46,24 +46,24 @@ const Signup = ({ auth }) => {
                             </div>
                         </div>
                         <form className="form">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="User name" value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <div className="field">
+                                <p className="control">
+                                    <input className="input" type="text" placeholder="User name" value={username} onChange={(e) => setUsername(e.target.value)} />
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <div className="field">
+                                <p className="control">
+                                    <input className="input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <div className="field">
+                                <p className="control">
+                                    <input className="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <button class="button is-success" type="button" onClick={signupUserWithEmailAndPassword}>
+                            <div className="field">
+                                <p className="control">
+                                    <button className="button is-success" type="button" onClick={signupUserWithEmailAndPassword}>
                                         Signup
                                     </button>
                                 </p>

@@ -7,13 +7,13 @@ const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
     }
     return (
         <div className="job-preview-modal-container">
-            <div class={showPreview ? "modal is-active" : "modal"}>
-                <div class="modal-background" onClick={closeModal}></div>
-                <div class="modal-card">
+            <div className={showPreview ? "modal is-active" : "modal"}>
+                <div className="modal-background" onClick={closeModal}></div>
+                <div className="modal-card">
 
-                    <section class="modal-card-body">
+                    <section className="modal-card-body">
                         <div className="close-button">
-                            <button class="delete" aria-label="close" onClick={closeModal}></button>
+                            <button className="delete" aria-label="close" onClick={closeModal}></button>
                         </div>
                         <div className="view-job-container">
                             <div className="job-header">

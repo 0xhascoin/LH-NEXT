@@ -171,30 +171,30 @@ const Post = ({ auth }) => {
                 </div>
                 <form className="form">
                     {submitted && <p className="has-text-primary">Submitted your company</p>}
-                    <div class="field">
-                        <label class="label">Company Name</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Your company name" value={job.companyName} onChange={(e) => setJob({ ...job, companyName: e.target.value })} />
+                    <div className="field">
+                        <label className="label">Company Name</label>
+                        <div className="control">
+                            <input className="input" type="text" placeholder="Your company name" value={job.companyName} onChange={(e) => setJob({ ...job, companyName: e.target.value })} />
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Company Description</label>
-                        <div class="control">
+                    <div className="field">
+                        <label className="label">Company Description</label>
+                        <div className="control">
                             <textarea className="textarea" cols="30" rows="7" placeholder='Write a short description about the culture of your company' value={job.companyDescription} onChange={(e) => setJob({ ...job, companyDescription: e.target.value })}></textarea>
                         </div>
                     </div>
-                    <div class="field logo-field">
+                    <div className="field logo-field">
                         <div>
-                            <label class="label">Upload your logo</label>
-                            <div class="control">
-                                <div class="file is-normal is-boxed">
-                                    <label class="file-label">
-                                        <input class="file-input" type="file" name="resume" onChange={fileUploaded} />
-                                        <span class="file-cta has-text-centered">
-                                            <span class="file-icon">
+                            <label className="label">Upload your logo</label>
+                            <div className="control">
+                                <div className="file is-normal is-boxed">
+                                    <label className="file-label">
+                                        <input className="file-input" type="file" name="resume" onChange={fileUploaded} />
+                                        <span className="file-cta has-text-centered">
+                                            <span className="file-icon">
                                                 <AiOutlineCloudUpload />
                                             </span>
-                                            <span class="file-label">
+                                            <span className="file-label">
                                                 Click to upload file
                                             </span>
                                         </span>
@@ -211,10 +211,10 @@ const Post = ({ auth }) => {
                             )}
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Job title</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Job title" value={job.jobTitle} onChange={(e) => setJob({ ...job, jobTitle: e.target.value })} />
+                    <div className="field">
+                        <label className="label">Job title</label>
+                        <div className="control">
+                            <input className="input" type="text" placeholder="Job title" value={job.jobTitle} onChange={(e) => setJob({ ...job, jobTitle: e.target.value })} />
                         </div>
                     </div>
                     <div className="field double">
@@ -264,9 +264,9 @@ const Post = ({ auth }) => {
                             </div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Job Description</label>
-                        <div class="control">
+                    <div className="field">
+                        <label className="label">Job Description</label>
+                        <div className="control">
                             <textarea className="textarea" cols="30" rows="7" placeholder='Write a description about your requirements for this role' value={job.jobDescription} onChange={(e) => setJob({ ...job, jobDescription: e.target.value })}></textarea>
                         </div>
                     </div>

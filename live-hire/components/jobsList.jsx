@@ -70,7 +70,7 @@ const JobsList = ({ allJobs }) => {
         <div className="jobs-list-container">
             <div className="jobs-list">
                 {displayJobs?.map((job) => (
-                    <div class="job">
+                    <div className="job">
                         <div className="header">
                             <div className="logo">
                                 <img src={job.companyLogo} />
@@ -99,10 +99,10 @@ const JobsList = ({ allJobs }) => {
                     </div>
                 ))}
             </div>
-            <nav class="pagination-container pagination is-small" role="navigation" aria-label="pagination">
-                <ul class="pagination-list">
+            <nav className="pagination-container pagination is-small" role="navigation" aria-label="pagination">
+                <ul className="pagination-list">
                     {[...Array(maxPages)].map((_, index) => (
-                    <li><a class={currentPage === index+1 ? "pagination-link is-current" : "pagination-link"} aria-label="Goto page 1" onClick={() => changeDisplayJobs(index+1)}>{index+1}</a></li>
+                    <li><a className={currentPage === index+1 ? "pagination-link is-current" : "pagination-link"} aria-label="Goto page 1" onClick={() => changeDisplayJobs(index+1)}>{index+1}</a></li>
                     ))}
                 </ul>
             </nav>

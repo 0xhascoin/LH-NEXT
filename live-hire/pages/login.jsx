@@ -29,8 +29,8 @@ const Login = ({ auth }) => {
                             <h3 className="header-subtitle">
                                 Welcome back, please enter your details
                             </h3>
-                            <button class="button" onClick={loginWithGoogle}>
-                                <span class="icon">
+                            <button className="button" onClick={loginWithGoogle}>
+                                <span className="icon">
                                     <FcGoogle />
                                 </span>
                                 <span>Login with Google</span>
@@ -42,19 +42,19 @@ const Login = ({ auth }) => {
                             </div>
                         </div>
                         <form className="form">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="email" placeholder="Email"  value={email} onChange={(e) => setEmail(e.target.value)} />            
+                            <div className="field">
+                                <p className="control">
+                                    <input className="input" type="email" placeholder="Email"  value={email} onChange={(e) => setEmail(e.target.value)} />            
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <div className="field">
+                                <p className="control">
+                                    <input className="input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <button class="button is-success" type="button" onClick={loginUserWithEmailAndPassword}>
+                            <div className="field">
+                                <p className="control">
+                                    <button className="button is-success" type="button" onClick={loginUserWithEmailAndPassword}>
                                         Login
                                     </button>
                                 </p>

@@ -21,14 +21,14 @@ const Header = () => {
       }
 
     return (
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/">
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand">
+                <a className="navbar-item" href="/">
                     <Image src={LH_LOGO} width={50} height={50} />
                     <span className="text">Live Hire</span>
                 </a>
 
-                <a role="button" onClick={() => setShowMenu(!showMenu)} class={showMenu ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <a role="button" onClick={() => setShowMenu(!showMenu)} className={showMenu ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -36,10 +36,10 @@ const Header = () => {
             </div>
 
 
-            <div id="navbarBasicExample" class={showMenu ? "navbar-menu is-active" : "navbar-menu"}>
+            <div id="navbarBasicExample" className={showMenu ? "navbar-menu is-active" : "navbar-menu"}>
 
 
-                <div class="navbar-end">
+                <div className="navbar-end">
                     <Link href={'/post'}>
                     
                     <button className="button navbar-item post-job">Post job</button>
