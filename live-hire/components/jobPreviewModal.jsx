@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 
 const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
 
@@ -30,12 +31,11 @@ const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
                             </div>
                             <div className="job-description">
                                 <h2 className="heading">Company Description</h2>
-                                <p>{selectedJob?.companyDescription}</p>
+                                <p className="parse">{parse(selectedJob?.companyDescription)}</p>
                             </div>
                             <div className="job-description">
                                 <h2 className="heading mb-5">Job Description</h2>
-                                <p>{selectedJob.jobDescription}</p>
-                                <p>{selectedJob.jobDescription}</p>
+                                <p className="parse">{parse(selectedJob.jobDescription)}</p>
                             </div>
                             <div className="job-description">
                                 <h2 className="heading mb-5">Interview Details</h2>

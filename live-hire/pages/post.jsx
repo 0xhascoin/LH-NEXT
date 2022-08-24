@@ -8,6 +8,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import PostJobErrorModal from '../components/postJobErrorModal';
 import PostJobSuccessModal from '../components/postJobSuccessModal';
+import dynamic from "next/dynamic";
+
+
+const ReactQuill = dynamic(import('react-quill'), { ssr: false })
+
 
 const Post = ({ auth }) => {
     const [job, setJob] = useState({
@@ -24,6 +29,8 @@ const Post = ({ auth }) => {
         interviewTime: "",
 
     })
+    const [companyDesc, setCompanyDes] = useState("");
+    const [jobDesc, setJobDesc] = useState("");
     const [file, setFile] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [progress, setProgress] = useState(0);
@@ -160,6 +167,16 @@ const Post = ({ auth }) => {
         setFile("");
     }
 
+    useEffect(() => {
+        console.log("Company desc: ", companyDesc)
+        setJob({...job, companyDescription: companyDesc})
+    }, [companyDesc])
+    useEffect(() => {
+        console.log("Job desc: ", jobDesc)
+        setJob({...job, jobDescription: companyDesc})
+    }, [jobDesc])
+
+
     return (
         <div className="post-page">
             <Header />
@@ -177,10 +194,16 @@ const Post = ({ auth }) => {
                             <input className="input" type="text" placeholder="Your company name" value={job.companyName} onChange={(e) => setJob({ ...job, companyName: e.target.value })} />
                         </div>
                     </div>
-                    <div className="field">
+                    {/* <div className="field">
                         <label className="label">Company Description</label>
                         <div className="control">
                             <textarea className="textarea" cols="30" rows="7" placeholder='Write a short description about the culture of your company' value={job.companyDescription} onChange={(e) => setJob({ ...job, companyDescription: e.target.value })}></textarea>
+                        </div>
+                    </div> */}
+                    <div className="field">
+                        <label className="label">Company Description</label>
+                        <div className="control">
+                        <ReactQuill theme="snow" value={companyDesc} onChange={setCompanyDes} />
                         </div>
                     </div>
                     <div className="field logo-field">
@@ -264,10 +287,16 @@ const Post = ({ auth }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="field">
+                    {/* <div className="field">
                         <label className="label">Job Description</label>
                         <div className="control">
                             <textarea className="textarea" cols="30" rows="7" placeholder='Write a description about your requirements for this role' value={job.jobDescription} onChange={(e) => setJob({ ...job, jobDescription: e.target.value })}></textarea>
+                        </div>
+                    </div> */}
+                    <div className="field">
+                        <label className="label">Job Description</label>
+                        <div className="control">
+                        <ReactQuill theme="snow" value={jobDesc} onChange={setJobDesc} />
                         </div>
                     </div>
                     <hr />

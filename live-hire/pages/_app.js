@@ -7,6 +7,8 @@ import '../styles/post.scss';
 import '../styles/jobPreviewModal.scss';
 import '../styles/postJobErrorModal.scss';
 import '../styles/jobsList.scss';
+import 'react-quill/dist/quill.snow.css';
+
 
 
 import AuthStateChanged from '../auth/AuthStateChanged'

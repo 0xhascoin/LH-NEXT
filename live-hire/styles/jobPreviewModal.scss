@@ -1,7 +1,7 @@
 .job-preview-modal-container {
 
     .modal {
-        
+
         .modal-card {
 
             .modal-card-body {
@@ -24,6 +24,7 @@
 
 
                 border-radius: 6px;
+
                 .view-job-container {
                     border: 1px solid white;
                     margin-top: 20px;
@@ -31,18 +32,18 @@
                     border-radius: 4px;
                     padding: 15px;
                     // height: 300px;
-                
+
                     .job-header {
                         // border: 1px solid black;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                
+
                         .header-left {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
-                
+
                             .logo {
                                 // border: 1px solid black;
                                 // height: 10px;
@@ -51,25 +52,25 @@
                                 align-items: center;
                                 border-radius: 4px;
                                 margin-right: 15px;
-                
+
                                 img {
                                     height: 96px;
                                     width: 96px;
                                     border-radius: 4px;
                                 }
                             }
-                
+
                             .titles {
                                 // border: 1px solid black;
                                 // height: 10px;
                                 margin-left: 0;
-                
+
                                 .job-title {
                                     font-size: .9rem;
                                     color: black;
                                     font-weight: 500;
                                 }
-                
+
                                 .company-name {
                                     color: gray;
                                     font-weight: 600;
@@ -77,30 +78,30 @@
                                 }
                             }
                         }
-                
+
                         .header-right {
                             display: flex;
                             align-items: center;
-                
+
                             .save {
                                 // border: 1px solid black;
-                                
+
                                 .button {
                                     height: 36px;
                                     width: 36px;
                                     padding: .2rem;
                                     border: 1px solid rgb(167, 167, 167);
                                     border-radius: 50%;
-                
+
                                     svg {
                                         font-size: 1rem;
                                         color: rgb(90, 90, 90);
                                         border: none;
                                     }
-                
+
                                     &:hover {
                                         border-color: black;
-                
+
                                         svg {
                                             color: black;
                                         }
@@ -108,35 +109,67 @@
                                 }
                             }
                         }
-                
+
                     }
-                
+
                     .job-description {
                         // border: 1px solid black;
                         margin-top: 2rem;
-                
+
                         .heading {
                             font-size: .9rem;
                             color: black;
                             font-weight: 600;
                             margin-bottom: 20px;
                         }
-                
+
                         p {
                             font-size: .8rem;
                             margin-bottom: 20px;
                         }
+
+                        .parse {
+                            // border: 1px solid black;
+
+                            h1 {
+                                // border: 1px solid red;
+                                font-size: 2rem;
+                            }
+
+                            h2 {
+                                font-size: 1.5rem;
+                            }
+
+                            h3 {
+                                font-size: 1.2rem;
+                            }
+
+                            ol {
+                                // border: 2px solid blue;
+                                padding-left: 20px;
+
+                            }
+
+                            ul {
+                                // border: 2px solid green;
+                                padding-left: 20px;
+
+                                li {
+                                    list-style-type: disc;
+                                }
+                            }
+                        }
                     }
-                
+
                     .skills-container {
                         // border: 1px solid black;
-                
+
                         .heading {
                             color: black;
                             font-weight: 600;
                             margin-bottom: 10px;
                         }
-                
+
                         .tag {
                             margin-right: 10px;
                             height: 30px;
@@ -148,4 +181,3 @@
         }
     }
 }
-
