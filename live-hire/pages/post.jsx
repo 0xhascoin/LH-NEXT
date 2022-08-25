@@ -173,7 +173,7 @@ const Post = ({ auth }) => {
     }, [companyDesc])
     useEffect(() => {
         console.log("Job desc: ", jobDesc)
-        setJob({...job, jobDescription: companyDesc})
+        setJob({...job, jobDescription: jobDesc})
     }, [jobDesc])
 
 
