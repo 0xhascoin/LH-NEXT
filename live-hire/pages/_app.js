@@ -7,6 +7,7 @@ import '../styles/post.scss';
 import '../styles/jobPreviewModal.scss';
 import '../styles/postJobErrorModal.scss';
 import '../styles/jobsList.scss';
+import '../styles/viewJob.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

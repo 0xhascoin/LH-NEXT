@@ -1,0 +1,214 @@
+.page-container {
+    background-color: rgb(253, 253, 253);
+}
+.main-job-container {
+    // border: 1px solid black;
+    // height: 90vh;
+    // padding: 1rem;
+
+    .columns {
+        border: 1px solid black;
+        margin: 0;
+        height: 100%;
+
+        .column.is-left {
+            border: 1px solid black;
+
+            .view-job-container {
+                border: 1px solid rgb(221, 221, 221);
+                margin-top: 20px;
+                background-color: white;
+                border-radius: 4px;
+                padding: 3rem;
+                // height: 300px;
+
+                .job-header {
+                    // border: 1px solid black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .header-left {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .logo {
+                            // border: 1px solid black;
+                            // height: 10px;
+                            padding: 0;
+                            display: flex;
+                            align-items: center;
+                            border-radius: 4px;
+                            margin-right: 15px;
+
+                            img {
+                                height: 96px;
+                                width: 96px;
+                                border-radius: 4px;
+                            }
+                        }
+
+                        .titles {
+                            // border: 1px solid black;
+                            // height: 10px;
+                            margin-left: 0;
+
+                            .job-title {
+                                font-size: .9rem;
+                                color: black;
+                                font-weight: 500;
+                            }
+
+                            .company-name {
+                                color: gray;
+                                font-weight: 600;
+                                font-size: .8rem;
+                            }
+                        }
+                    }
+
+                    .header-right {
+                        display: flex;
+                        align-items: center;
+
+                        .save {
+                            // border: 1px solid black;
+
+                            .button {
+                                height: 36px;
+                                width: 36px;
+                                padding: .2rem;
+                                border: 1px solid rgb(167, 167, 167);
+                                border-radius: 50%;
+
+                                svg {
+                                    font-size: 1rem;
+                                    color: rgb(90, 90, 90);
+                                    border: none;
+                                }
+
+                                &:hover {
+                                    border-color: black;
+
+                                    svg {
+                                        color: black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .job-description {
+                    // border: 1px solid black;
+                    margin-top: 2rem;
+
+                    .heading {
+                        font-size: .9rem;
+                        color: black;
+                        font-weight: 600;
+                        margin-bottom: 20px;
+                    }
+
+                    p {
+                        font-size: .8rem;
+                        margin-bottom: 20px;
+                    }
+
+                    ul {
+                        font-size: .8rem;
+                        list-style: disc;
+                        padding-left: 20px;
+                    }
+                }
+
+                .skills-container {
+                    // border: 1px solid black;
+
+                    .heading {
+                        color: black;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+
+                    .tag {
+                        margin-right: 10px;
+                        height: 30px;
+                        min-width: 10%;
+                    }
+                }
+            }
+        }
+
+        .column.is-right {
+            padding: 3rem 1rem;
+
+            .apply-container {
+                border: 1px solid black;
+                background-color: white;
+                border-radius: 4px;
+                // margin-top: 1rem;
+                padding: 3rem 1rem;
+
+                .company-logo {
+                    // border: 1px solid black;
+                    display: flex;
+                    justify-content: center;
+
+                    img {
+                        // border: 1px solid black;
+                        height: 5rem;
+                    }
+                }
+
+                .company-name {
+                    // border: 1px solid black;
+                    text-align: center;
+                    margin-top: 10px;
+
+                    p {
+                        font-size: 2rem;
+                        color: black;
+                        font-weight: 500;
+                    }
+                }
+
+                .interview-details {
+                    // border: 1px solid black;
+                    text-align: center;
+                    margin-top: 20px;
+                    .heading {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        color: black;
+                    }
+
+                    .interview {
+                        // border: 1px solid black;
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                        padding: 1rem;
+                        border-radius: 4px;
+                        box-shadow: 0 1px 3px rgba(109, 109, 109, 0.52), 0 1px 2px rgba(96, 96, 96, 0.54);
+                        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                    }
+                }
+
+                .buttons {
+                    border: 1px solid black;
+                    margin-top: 20px;
+
+                    .button {
+                        width: 100%;
+                        margin: 0;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
