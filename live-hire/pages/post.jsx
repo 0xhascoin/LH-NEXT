@@ -29,7 +29,7 @@ const Post = ({ auth }) => {
         interviewTime: "",
 
     })
-    const [companyDesc, setCompanyDes] = useState("");
+    const [companyDesc, setCompanyDesc] = useState("");
     const [jobDesc, setJobDesc] = useState("");
     const [file, setFile] = useState("");
     const [submitted, setSubmitted] = useState(false);
@@ -165,6 +165,8 @@ const Post = ({ auth }) => {
         })
         setProgress(0);
         setFile("");
+        setCompanyDesc("")
+        setJobDesc("")
     }
 
     useEffect(() => {
@@ -203,7 +205,7 @@ const Post = ({ auth }) => {
                     <div className="field">
                         <label className="label">Company Description</label>
                         <div className="control">
-                        <ReactQuill theme="snow" value={companyDesc} onChange={setCompanyDes} />
+                        <ReactQuill theme="snow" value={companyDesc} onChange={setCompanyDesc} />
                         </div>
                     </div>
                     <div className="field logo-field">

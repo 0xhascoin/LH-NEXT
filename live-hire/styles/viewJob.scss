@@ -7,16 +7,17 @@
     // padding: 1rem;
 
     .columns {
-        border: 1px solid black;
+        // border: 1px solid black;
         margin: 0;
         height: 100%;
+        padding: 0 3rem;
 
         .column.is-left {
-            border: 1px solid black;
+            // border: 1px solid black;
 
             .view-job-container {
                 border: 1px solid rgb(221, 221, 221);
-                margin-top: 20px;
+                // margin-top: 20px;
                 background-color: white;
                 border-radius: 4px;
                 padding: 3rem;
@@ -99,6 +100,35 @@
                         }
                     }
 
+
+
+                }
+
+                .job-details {
+                    // border: 1px solid black;
+                    padding: 1rem;
+                    margin: 10px -3rem;
+                    margin-top: 20px;
+                    background-color: rgb(253, 253, 253);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .detail {
+                        margin: 0 20px;
+                        text-align: center;
+                    }
+
+                    h2 {
+                        font-weight: 600;
+                        color: black;
+                    }
+
+                    h4 {
+                        font-size: .9rem;
+                        color: rgb(163, 163, 163);
+                    }
+
                 }
 
                 .job-description {
@@ -143,10 +173,12 @@
         }
 
         .column.is-right {
-            padding: 3rem 1rem;
+            // padding: 3rem 1rem;
 
             .apply-container {
-                border: 1px solid black;
+                // border: 1px solid black;
+                border: 1px solid rgb(221, 221, 221);
+
                 background-color: white;
                 border-radius: 4px;
                 // margin-top: 1rem;
@@ -198,7 +230,7 @@
                 }
 
                 .buttons {
-                    border: 1px solid black;
+                    // border: 1px solid black;
                     margin-top: 20px;
 
                     .button {

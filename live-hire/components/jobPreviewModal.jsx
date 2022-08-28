@@ -6,6 +6,10 @@ const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
     const closeModal = () => {
         setShowPreview(false);
     }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     return (
         <div className="job-preview-modal-container">
             <div className={showPreview ? "modal is-active" : "modal"}>
@@ -25,7 +29,7 @@ const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
                                     <div className="titles">
                                         <p className="job-title">{selectedJob?.jobTitle}</p>
                                         <p className="company-name">{selectedJob?.companyName}</p>
-                                        <p className="company-name has-text-primary">{selectedJob?.jobSalary} {" "} {selectedJob?.currency}</p>
+                                        <p className="company-name has-text-primary">{numberWithCommas(selectedJob?.jobSalary)} {" "} {selectedJob?.currency}</p>
                                     </div>
                                 </div>
                             </div>

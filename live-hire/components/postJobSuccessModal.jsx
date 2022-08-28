@@ -14,9 +14,9 @@ const PostJobSuccessModal = ({ submitted, setSubmitted, job }) => {
                 <div className="modal-background" onClick={closeModal}></div>
                 <div className="modal-card">
                     <div className="modal-card-body">
-                    <div className="close-button">
-                        <button className="delete" aria-label="close" onClick={closeModal}></button>
-                    </div>
+                        <div className="close-button">
+                            <button className="delete" aria-label="close" onClick={closeModal}></button>
+                        </div>
                         <div className="icon success">
                             <AiOutlineCheckSquare />
                         </div>

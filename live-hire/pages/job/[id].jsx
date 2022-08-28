@@ -33,6 +33,10 @@ const Job = () => {
         getJobFromFirebase()
     }, [])
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
 
     return (
         <div className="page-container">
@@ -52,7 +56,28 @@ const Job = () => {
                                             <p className="job-title company-name">{job?.companyName}</p>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div className="job-details">
+                                    <div className="detail">
+                                        <h2>Job Type</h2>
+                                        <h4>{job.jobType}</h4>
+                                    </div>
+                                    <div className="detail">
+                                        <h2>Job Level</h2>
+                                        <h4>{job.jobLevel}</h4>
+                                    </div>
+                                    <div className="detail">
+                                        <h2>Job Salary</h2>
+                                        <h4 className='has-text-primary'>{numberWithCommas(parseInt(job.jobSalary))} {job.currency}</h4>
+                                    </div>
+                                    <div className="detail">
+                                        <h2>Posted</h2>
+                                        <h4>{job.postedDate ? `${moment(job.postedDate).fromNow()}` : 'Posted 8 Days ago'}</h4>
+                                    </div>
+                                    <div className="detail">
+                                        <h2>Interview</h2>
+                                        <h4 className='has-text-info'>{job.postedDate ? `${moment(job.interviewDate).fromNow()}` : 'Posted 8 Days ago'}</h4>
+                                    </div>
                                 </div>
                                 <div className="job-description">
                                     <h2 className="heading">Company Description</h2>

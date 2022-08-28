@@ -36,33 +36,6 @@ const JobsList = ({ allJobs }) => {
         }
     }
 
-    function timeSince(date) {
-
-        var seconds = Math.floor((new Date() - date) / 1000);
-
-        var interval = seconds / 31536000;
-
-        if (interval > 1) {
-            return Math.floor(interval) + " years";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-            return Math.floor(interval) + " months";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-            return Math.floor(interval) + " days";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-            return Math.floor(interval) + " hours";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-            return Math.floor(interval) + " minutes";
-        }
-        return Math.floor(seconds) + " seconds";
-    }
 
     useEffect(() => {
         console.log("LENGTH: ", allJobs.length)
@@ -70,7 +43,7 @@ const JobsList = ({ allJobs }) => {
         console.log("HERE: ", Math.ceil(allJobs?.length / maxPerPage))
         setMaxPages(Math.ceil(allJobs?.length / maxPerPage))
         setCurrentPage(1);
-        console.log(parse(allJobs[4]?.companyDescription)[0].props.children.props.children.substring(0, 60));
+        // console.log(parse(allJobs[4]?.companyDescription)[0].props.children.props.children.substring(0, 60));
     }, [])
 
     return (
@@ -97,7 +70,15 @@ const JobsList = ({ allJobs }) => {
                                     </>
                                 ) : (
                                     <>
-                                        {parse(job.companyDescription)[0].props.children.props.children.substring(0, 60)}...
+                                        {parse(job.companyDescription).length ? (
+                                            <>
+                                                {parse(job.companyDescription)[0].props.children.props.children.substring(0, 60)}}...
+                                            </>
+                                        ) : (
+                                            <>
+                                                {parse(job.companyDescription).props.children.props.children.substring(0, 60)}...
+                                            </>
+                                        )}
                                     </>
                                 )}
                             </p>
