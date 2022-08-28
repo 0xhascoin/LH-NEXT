@@ -10,7 +10,7 @@
         // border: 1px solid black;
         margin: 0;
         height: 100%;
-        padding: 0 3rem;
+        padding: 0 1rem;
 
         .column.is-left {
             // border: 1px solid black;
@@ -174,6 +174,8 @@
 
         .column.is-right {
             // padding: 3rem 1rem;
+            // border: 1px solid black;
+            width: 100%;
 
             .apply-container {
                 // border: 1px solid black;
@@ -201,7 +203,7 @@
                     margin-top: 10px;
 
                     p {
-                        font-size: 2rem;
+                        font-size: 1.3rem;
                         color: black;
                         font-weight: 500;
                     }
@@ -210,9 +212,9 @@
                 .interview-details {
                     // border: 1px solid black;
                     text-align: center;
-                    margin-top: 20px;
+                    margin-top: 10px;
                     .heading {
-                        font-size: 1.2rem;
+                        font-size: 1rem;
                         font-weight: 600;
                         color: black;
                     }
@@ -222,10 +224,10 @@
                         display: flex;
                         justify-content: center;
                         margin-top: 10px;
-                        padding: 1rem;
+                        padding: .5rem 0;
                         border-radius: 4px;
-                        box-shadow: 0 1px 3px rgba(109, 109, 109, 0.52), 0 1px 2px rgba(96, 96, 96, 0.54);
-                        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                        border: 1px solid rgb(221, 221, 221);
+                        
                     }
                 }
 
@@ -238,9 +240,67 @@
                         margin: 0;
                         margin-bottom: 10px;
                     }
+
+                    p {
+                        // border: 1px solid black;
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }
                 }
             }
         }
     }
 }
 
+@media(max-width:1111px) {
+    .page-container {
+        .main-job-container {
+            .columns {
+                // padding: 0 .2rem;
+            }
+        }
+    }
+  }
+@media(max-width:767px) {
+    .page-container {
+        .main-job-container {
+            .columns {
+                padding: 0;
+                .column.is-left {
+                    padding-left: 0;
+                    padding-right: 0;
+                    .view-job-container {
+                        border-radius: 0;
+                        border: none;
+
+                    }
+                }
+            }
+        }
+    }
+  }
+@media(max-width:550px) {
+    .page-container {
+        .main-job-container {
+            .columns {
+                padding: 0;
+                .column.is-left {
+                    padding-left: 0;
+                    padding-right: 0;
+                    .job-details {
+                        // border: 2px solid red !important;
+                        display: block;
+
+                        .detail {
+                            margin: auto;
+                            margin-bottom: 20px;
+                            // border: 2px solid blue;
+                            width: 80%;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }

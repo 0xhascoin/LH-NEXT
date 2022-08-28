@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect } from 'react';
 import { AuthService } from '../auth/AuthService';
 import { db } from '../firebaseConfig';
 import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { useRouter } from 'next/router';
 
 const authContext = createContext();
 
@@ -13,6 +14,7 @@ export function AuthProvider(props) {
     const [user, setUser] = useState(null);
     const [usersJobs, setUsersJobs] = useState([]);
     const [error, setError] = useState("");
+    const router = useRouter();
 
     const loginWithGoogle = async () => {
         const { user, error } = await AuthService.loginWithGoogle();
@@ -69,6 +71,7 @@ export function AuthProvider(props) {
         await AuthService.logout();
         setUser(null);
         setUsersJobs([])
+        router.push("/")
     }
 
     const addNewUserToDB = async (user, data) => {

@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
-import { doc, getDoc } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from '../../firebaseConfig';
 import Loading from '../../components/loading';
 import Header from '../../components/header';
-import {BsBookmark} from 'react-icons/bs'
+import { BsBookmark } from 'react-icons/bs'
 import parse from 'html-react-parser'
 import moment from 'moment'
+import useAuth from '../../hook/auth';
 
 const Job = () => {
     const router = useRouter()
     const { id } = router.query
+    const { user } = useAuth();
+
 
     const [job, setJob] = useState({});
     const [loading, setLoading] = useState(false);
+    const [userApplied, setUserApplied] = useState(false);
 
     useEffect(() => {
         const getJobFromFirebase = async () => {
@@ -24,6 +28,7 @@ const Job = () => {
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
                 setJob(docSnap.data())
+                checkIfUserIsApplied(docSnap.data())
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -35,6 +40,29 @@ const Job = () => {
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const applyToJob = async () => {
+        const userRef = doc(db, "users", user.uid);
+        const jobRef = doc(db, "jobs", id);
+
+        await updateDoc(userRef, {
+            applications: arrayUnion(id)
+        });
+
+        await updateDoc(jobRef, {
+            applications: arrayUnion(user.uid)
+        });
+
+        setUserApplied(true);
+    }
+
+    const checkIfUserIsApplied = async (job) => {
+        job.applications && job.applications.map((app) => {
+            if (app === user?.uid) {
+                setUserApplied(true)
+            }
+        })
     }
 
 
@@ -81,11 +109,11 @@ const Job = () => {
                                 </div>
                                 <div className="job-description">
                                     <h2 className="heading">Company Description</h2>
-                                    <div>{typeof(job.companyDescription) == "string" && parse(job.companyDescription)}</div>
+                                    <div>{typeof (job.companyDescription) == "string" && parse(job.companyDescription)}</div>
                                 </div>
                                 <div className="job-description">
                                     <h2 className="heading mb-5">Job Description</h2>
-                                    <div>{typeof(job.jobDescription) == "string" && parse(job?.jobDescription)}</div>
+                                    <div>{typeof (job.jobDescription) == "string" && parse(job?.jobDescription)}</div>
                                 </div>
 
                             </div>
@@ -101,12 +129,22 @@ const Job = () => {
                                 <div className="interview-details">
                                     <h2 className="heading">Interview details:</h2>
                                     <div className="interview">
-                                    <p>{moment(`${job.interviewDate} ${job.interviewTime}`).format('MMMM Do YYYY, h:mm a')}</p>
+                                        <p>{moment(`${job.interviewDate} ${job.interviewTime}`).format('MMMM Do YYYY, h:mm a')}</p>
                                     </div>
                                 </div>
-                                <div className="buttons">
-                                    <button className="button rsvp">RSVP Here</button>
-                                    <button className="button disabled">You must login</button>
+                                <div className="buttons has-text-centered">
+                                    {userApplied ? (
+                                        <p className='has-text-centered'>Your RSVP has been made! <br />Thank You.</p>
+                                    ) : (
+                                        <>
+                                            {user === null || user === undefined ? (
+                                                <button className="button" onClick={() => router.push("/login")}>Login to apply</button>
+                                            ) : (
+                                                <button className="button rsvp" onClick={applyToJob}>RSVP Here</button>
+                                            )}
+                                            </>
+                                    )}
+                                    {user === null || user === undefined && <button className="button disabled">You must login</button>}
                                 </div>
                             </div>
                         </div>

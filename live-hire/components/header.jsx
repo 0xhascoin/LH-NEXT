@@ -8,7 +8,7 @@ const LH_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1
 
 const Header = () => {
     const { user, error, logout } = useAuth();
-    const [showMenu, setShowMenu] = useState(true);
+    const [showMenu, setShowMenu] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
 
     const toTitleCase = (str) => {
