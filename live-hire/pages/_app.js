@@ -8,6 +8,7 @@ import '../styles/jobPreviewModal.scss';
 import '../styles/postJobErrorModal.scss';
 import '../styles/jobsList.scss';
 import '../styles/viewJob.scss';
+import '../styles/pageBanner.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

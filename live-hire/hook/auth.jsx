@@ -54,7 +54,7 @@ export function AuthProvider(props) {
 
     const signupWithEmailAndPassword = async (username, email, password) => {
         const { user, error } = await AuthService.signupWithEmailAndPassword(email, password);
-        if (error === ""  || error === undefined) {
+        if (error === "" || error === undefined) {
             const data = {
                 userId: user.uid,
                 userName: username,
@@ -86,26 +86,30 @@ export function AuthProvider(props) {
         }
     }
 
-    const getUsersJobs = async (user) => {
+    const getUsersJobs = async () => {
+        if (error === "" || error === undefined) {
+            console.log(user.uid, "USer")
+        
         const userRef = doc(db, "users", user.uid);
         const userData = await getDoc(userRef);
-        const { jobs } = userData.data();
-        const jobsArr = [];
+        const { applications } = userData.data();
+        const appArray = [];
 
-        if (jobs !== undefined) {
-            for (let i = 0; i < jobs.length; i++) {
-                const jobRef = doc(db, "jobs", jobs[i]);
+        if (applications !== undefined) {
+            for (let i = 0; i < applications.length; i++) {
+                const jobRef = doc(db, "jobs", applications[i]);
                 const jobData = await getDoc(jobRef);
                 // jobsArr.push(jobData.data());
                 console.log(jobData.data())
-                jobsArr.push(jobData.data());
+                appArray.push(jobData.data());
             }
 
-            console.log(jobsArr);
-            setUsersJobs(jobsArr)
+            console.log(appArray);
+            setUsersJobs(appArray)
         }
 
-        console.log("usersJobs: ", jobsArr)
+        console.log("usersJobs: ", appArray)
+        }
 
     }
 
