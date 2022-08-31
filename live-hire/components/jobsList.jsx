@@ -70,9 +70,10 @@ const JobsList = ({ allJobs }) => {
                                     </>
                                 ) : (
                                     <>
+
                                         {parse(job.companyDescription).length ? (
                                             <>
-                                                {parse(job.companyDescription)[0].props.children.props.children.substring(0, 60)}}...
+                                                {parse(job.companyDescription)[0].props.children.props.children.substring(0, 60)}...
                                             </>
                                         ) : (
                                             <>
