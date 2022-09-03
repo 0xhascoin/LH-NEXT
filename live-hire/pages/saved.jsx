@@ -24,9 +24,8 @@ const Saved = () => {
                     for (let i = 0; i < applications.length; i++) {
                         const jobRef = doc(db, "jobs", applications[i]);
                         const jobData = await getDoc(jobRef);
-                        // jobsArr.push(jobData.data());
-                        console.log(jobData.data())
-                        appArray.push(jobData.data());
+                        const { id } = jobData;
+                        appArray.push({id, ...jobData.data()});
                     }
 
                     console.log(appArray);

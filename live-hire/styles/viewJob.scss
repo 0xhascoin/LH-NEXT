@@ -134,6 +134,7 @@
                 .job-description {
                     // border: 1px solid black;
                     margin-top: 2rem;
+                    color: black !important;
 
                     .heading {
                         font-size: .9rem;
@@ -145,12 +146,14 @@
                     p {
                         font-size: .8rem;
                         margin-bottom: 20px;
+                        color: black;
                     }
 
                     ul {
                         font-size: .8rem;
                         list-style: disc;
                         padding-left: 20px;
+                        color: black;
                     }
                 }
 
