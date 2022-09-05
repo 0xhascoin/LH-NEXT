@@ -9,6 +9,7 @@ import '../styles/postJobErrorModal.scss';
 import '../styles/jobsList.scss';
 import '../styles/viewJob.scss';
 import '../styles/pageBanner.scss';
+import '../styles/search.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

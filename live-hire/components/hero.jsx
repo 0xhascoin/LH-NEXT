@@ -1,18 +1,28 @@
 import React from 'react';
+import {wavy} from '../wavy.png'
+import Search from './search';
 
 const Hero = () => {
     return (
         <div className="hero-container">
-            <div className="heading">
-                <h1>Stop sending <span>applications</span></h1> <br />
-                <h1>Jump straight to <span>interviews</span></h1>
-            </div>
-            <div className="subheading">
-                <h3>Tired of sending <span className="has-text-danger">application</span> after <span className="has-text-danger">application</span>?</h3> <br />
-                <h3>We dont believe in that!</h3> <br />
-                <h3>Jump straight to the interviews and <span className="has-text-primary">PROVE YOURSELF</span></h3>
-            </div>
+        <div className="hero-bg">
+          <img src={'../wavy.png'} className="line1" />
+          <img src={wavy} className="line2" />
+          <img src={wavy} className="line3" />
         </div>
+        <h2 className="hero-title">
+          Find Your <span>Dream Job</span> Here <br/>Easy & Fast
+        </h2>
+        <p className="hero-subtitle">
+          Finding proper jobs in America can be tough... Jobify is a platform
+          where you can <br />
+          get your desired job without any hassle & in less time
+        </p>
+        <Search />
+              <p className="hero-subtitle">
+          Trusted by over 280+ companies
+        </p>
+      </div>
     )
 };
 
