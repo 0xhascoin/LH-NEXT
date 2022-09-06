@@ -4,9 +4,10 @@
   //border-top: none;
   // background-color: #fafafa;
   // background-color: transparent;
-  background-color: #F6F7F9;
+  background-color: #fefefe;
   border-top: 1px solid #fafafa;
   padding-bottom: 2rem;
+  
 
 
 
@@ -24,8 +25,9 @@
       background: white;
       border-radius: 8px;
       padding: 16px;
-      border: 1px solid #F6F7F9;
+      border: 1px solid #C2C7D2;
       transition: all .2s ease;
+      // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
       &:hover {
         border: 1px solid #C2C7D2;

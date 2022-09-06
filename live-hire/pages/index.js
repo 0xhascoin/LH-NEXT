@@ -9,6 +9,7 @@ import JobsList from "../components/jobsList";
 
 const Home = () => {
   const [allJobs, setAllJobs] = useState([]);
+  const [displayJobs, setDisplayJobs] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -22,19 +23,24 @@ const Home = () => {
         tempArr.push({ id: doc.id, ...doc.data() })
         console.log(doc.id, " => ", doc.data());
       });
-      setAllJobs(tempArr)
+      setAllJobs(tempArr);
+      setDisplayJobs(tempArr);
     }
 
     getAllJobsFromFirebase()
   }, []);
+
+  useEffect(() => {
+    console.log("DISPLAY JOBS: ", displayJobs);
+  }, [displayJobs])
 
 
 
   return (
     <div className="home">
       <Header />
-      <Hero />
-      {allJobs.length ? <JobsList allJobs={allJobs} /> : (
+      {displayJobs.length && <Hero displayJobs={displayJobs} setDisplayJobs={setDisplayJobs} allJobs={allJobs} /> }
+      {displayJobs.length ? <JobsList allJobs={displayJobs} /> : (
         <h2>Loading...</h2>
       )}
       

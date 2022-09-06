@@ -15,6 +15,17 @@
       // border: 1px solid black;
       padding-left: 15px;
       padding-right: 10px;
+
+      &.close {
+        // border: 1px solid black;
+        z-index: 10;
+        cursor: pointer;
+
+        svg {
+          color: rgb(161, 161, 161);
+        }
+        
+      }
   
       svg {
         font-size: 1.2rem;

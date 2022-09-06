@@ -46,6 +46,15 @@ const JobsList = ({ allJobs }) => {
         // console.log(parse(allJobs[4]?.companyDescription)[0].props.children.props.children.substring(0, 60));
     }, [])
 
+    useEffect(() => {
+        console.log("ALL JOBS: ", allJobs);
+        console.log("LENGTH: ", allJobs.length)
+        setDisplayJobs(allJobs.slice(0, maxPerPage))
+        console.log("HERE: ", Math.ceil(allJobs?.length / maxPerPage))
+        setMaxPages(Math.ceil(allJobs?.length / maxPerPage))
+        setCurrentPage(1);
+      }, [allJobs])
+
     return (
         <div className="jobs-list-container">
             <div className="jobs-list">
