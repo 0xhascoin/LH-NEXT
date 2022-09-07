@@ -23,7 +23,7 @@ const Search = ({ displayJobs, setDisplayJobs, allJobs }) => {
   const searchJobs = () => {
     if (searchText !== "") {
       let result = [];
-      let filteredData = displayJobs.filter(function (job) {
+      let filteredData = allJobs.filter(function (job) {
         let title = job.jobTitle.toString();
         title.toLowerCase().includes(searchText.toLowerCase()) &&
           result.push(job);
