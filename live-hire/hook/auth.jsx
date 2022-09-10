@@ -31,7 +31,7 @@ export function AuthProvider(props) {
 
             setUser(user ?? null);
             setError(error ?? "");
-            await getUsersJobs(user)
+            // await getUsersJobs(user)
         }
     }
 
@@ -48,7 +48,7 @@ export function AuthProvider(props) {
             await addNewUserToDB(user, data);
             setUser(user ?? null);
             setError(error ?? "");
-            await getUsersJobs(user)
+            // await getUsersJobs(user)
         }
     }
 
@@ -63,7 +63,7 @@ export function AuthProvider(props) {
             await addNewUserToDB(user, data);
             setUser(user ?? null);
             setError(error ?? "");
-            await getUsersJobs(user)
+            // await getUsersJobs(user)
         }
     }
 
@@ -86,35 +86,10 @@ export function AuthProvider(props) {
         }
     }
 
-    const getUsersJobs = async () => {
-        if (error === "" || error === undefined) {
-            console.log(user.uid, "USer")
-        
-        const userRef = doc(db, "users", user.uid);
-        const userData = await getDoc(userRef);
-        const { applications } = userData.data();
-        const appArray = [];
-
-        if (applications !== undefined) {
-            for (let i = 0; i < applications.length; i++) {
-                const jobRef = doc(db, "jobs", applications[i]);
-                const jobData = await getDoc(jobRef);
-                // jobsArr.push(jobData.data());
-                console.log(jobData.data())
-                appArray.push(jobData.data());
-            }
-
-            console.log(appArray);
-            setUsersJobs(appArray)
-        }
-
-        console.log("usersJobs: ", appArray)
-        }
-
-    }
 
 
-    const value = { user, getUsersJobs, usersJobs, error, loginWithGoogle, logout, setUser, loginWithEmailAndPassword, signupWithEmailAndPassword };
+
+    const value = { user, usersJobs, error, loginWithGoogle, logout, setUser, loginWithEmailAndPassword, signupWithEmailAndPassword };
 
     return <authContext.Provider value={value} {...props} />
 

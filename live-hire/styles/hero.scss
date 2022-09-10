@@ -95,3 +95,11 @@
     font-family: 'Nunito', sans-serif;
   }
 }
+
+
+@media(max-width:580px) {
+  .hero-title {
+    width: 95% !important;
+  }
+}
+

@@ -67,3 +67,9 @@
       }
     }
   }
+
+  @media(max-width:550px) {
+    .search-container {
+      width: 95% !important;
+    }
+  }

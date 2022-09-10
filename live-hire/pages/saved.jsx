@@ -6,15 +6,17 @@ import Loading from '../components/loading';
 import PageBanner from '../components/pageBanner';
 import { db } from '../firebaseConfig';
 import useAuth from '../hook/auth';
+import { withProtected } from '../hook/route';
+
 
 const Saved = () => {
     const [usersJobs, setUsersJobs] = useState([]);
 
-    const { user, error, getUsersJobs } = useAuth();
+    const { user, error } = useAuth();
 
     useEffect(() => {
         const getUsersJobs = async () => {
-            if (error === "" || error === undefined) {
+            if (error === "" || error === undefined || user.uid !== null) {
 
                 const userRef = doc(db, "users", user.uid);
                 const userData = await getDoc(userRef);
@@ -50,4 +52,4 @@ const Saved = () => {
     )
 };
 
-export default Saved;
+export default withProtected(Saved);

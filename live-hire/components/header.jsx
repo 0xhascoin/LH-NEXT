@@ -13,21 +13,21 @@ const Header = () => {
 
     const toTitleCase = (str) => {
         return str.replace(
-          /\w\S*/g,
-          function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-          }
+            /\w\S*/g,
+            function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
         );
-      }
+    }
 
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <Link href={'/'}>
-                <a className="navbar-item">
-                    <Image src={LH_LOGO} width={50} height={50} />
-                    <span className="text">Live Hire</span>
-                </a>
+                    <a className="navbar-item">
+                        <Image src={LH_LOGO} width={50} height={50} />
+                        <span className="text">Live Hire</span>
+                    </a>
                 </Link>
 
                 <a role="button" onClick={() => setShowMenu(!showMenu)} className={showMenu ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -43,8 +43,8 @@ const Header = () => {
 
                 <div className="navbar-end">
                     <Link href={'/post'}>
-                    
-                    <button className="button navbar-item post-job">Post job</button>
+
+                        <button className="button navbar-item post-job">Post job</button>
                     </Link>
                     <Link href={"/"}>
                         <a className="navbar-item">
@@ -56,11 +56,17 @@ const Header = () => {
                     </a>
                     {user === null ? (
                         <>
-                            <Link href={'/login'}>
-                                <button className="button navbar-item">
-                                    Get Started
-                                </button>
-                            </Link>
+                        
+                        <Link href={"/login"}>
+                            <a className="navbar-item">
+                                Login
+                            </a>
+                        </Link>
+                        <Link href={"/signup"}>
+                            <a className="navbar-item">
+                                Sign Up
+                            </a>
+                        </Link>
                         </>
                     ) : (
                         <div
