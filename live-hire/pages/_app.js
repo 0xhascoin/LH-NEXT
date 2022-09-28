@@ -11,6 +11,7 @@ import '../styles/viewJob.scss';
 import '../styles/pageBanner.scss';
 import '../styles/search.scss';
 import '../styles/account.scss';
+import '../styles/workExperience.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

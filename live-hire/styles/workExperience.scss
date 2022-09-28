@@ -1,0 +1,42 @@
+.modal {
+
+
+
+    .modal-card-head {
+      // border: 2px solid red;
+      background-color: white;
+      text-align: center;
+    }
+  
+  
+  
+    .field {
+          // border: 1px solid black;
+      margin-bottom: 10px;
+  
+        .label {
+          font-family: 'Roboto', sans-serif;
+          font-size: .9rem;
+          font-weight: 500;
+        }
+  
+        .input, .textarea {
+          box-shadow: none;
+          height: 2.2rem;
+          font-size: .9rem;
+        }
+  
+      .control {
+        &.dates {
+          display: flex;
+        }
+      }
+  
+        
+        }
+  
+    .modal-card-foot {
+      // border: 2px solid red;
+      padding: .75rem;
+    }
+  }
