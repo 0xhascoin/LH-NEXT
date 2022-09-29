@@ -276,6 +276,15 @@
         font-size: 3rem;
         text-align: center;
         color: black;
+
+        .view-resume-button {
+          font-size: .9rem;
+          border: 1px solid rgb(193, 193, 193);
+          padding: 1rem;
+          border-radius: 6px;
+          font-weight: 500;
+          color: rgb(60, 137, 237);
+        }
       }
     }
 

@@ -7,6 +7,7 @@ import { BiCloudUpload } from 'react-icons/bi'
 import Header from '../components/header';
 import WorkExperienceModal from '../components/workExperienceModal';
 import EducationModal from '../components/educationModal';
+import AccountErrorModal from '../components/accountErrorModal';
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, storage } from '../firebaseConfig';
 import useAuth from '../hook/auth';
@@ -25,7 +26,7 @@ const Account = () => {
         lastName: "",
         location: "",
         profileImage: null,
-        resume: ""
+        resume: null
     })
     const [skills, setSkills] = useState([
         "react", "javascript", "css", "html"
@@ -54,7 +55,7 @@ const Account = () => {
                         lastName: lastName ?? "",
                         location: location ?? "",
                         profileImage: profileImage ?? null,
-                        resume: resume ?? ""
+                        resume: resume ?? null
                     })
                     setSkills(skills ?? [])
                     setWorkExperienceList(workExperienceList ?? [])
@@ -86,7 +87,7 @@ const Account = () => {
                     lastName: lastName ?? "",
                     location: location ?? "",
                     profileImage: profileImage ?? null,
-                    resume: resume ?? ""
+                    resume: resume ?? null
                 })
                 setSkills(skills ?? [])
                 setWorkExperienceList(workExperienceList ?? [])
@@ -110,8 +111,10 @@ const Account = () => {
             await setDoc(userRef, userProfile, { merge: true });
             await getUserDetails();
         } else {
-            alert("Fill in all fields please.");
+            // alert("Fill in all fields please.");
             setSavingProfile(false);
+            setShowAccountErrorModal(true);
+            setErrorMessage("Please fill in all fields.")
         }
     }
 
@@ -133,6 +136,8 @@ const Account = () => {
 
     const [showWorkExperienceModal, setShowWorkExperienceModal] = useState(false);
     const [showEducationModal, setShowEducationModal] = useState(false);
+    const [showAccountErrorModal, setShowAccountErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
 
 
     const toTitleCase = (str) => {
@@ -165,7 +170,9 @@ const Account = () => {
 
     const addSkill = async () => {
         if (skill === "") {
-            alert("Enter a skill")
+            // alert("Enter a skill")
+            setShowAccountErrorModal(true);
+            setErrorMessage("Please enter a skill")
         } else {
             if (!skills.includes(skill.toLowerCase())) {
                 let tempArr = [...skills];
@@ -176,7 +183,9 @@ const Account = () => {
                 await setDoc(userRef, { skills: tempArr }, { merge: true });
                 // await getUserDetails();
             } else {
-                alert("Skill already added.")
+                // alert("Skill already added.")
+                setShowAccountErrorModal(true);
+                setErrorMessage("Skill already added")
             }
         }
     }
@@ -220,7 +229,43 @@ const Account = () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
                     setUserProfile({ ...userProfile, profileImage: downloadURL })
                     const userRef = doc(db, 'users', user.uid);
-                    await setDoc(userRef, {profileImage: downloadURL}, { merge: true });
+                    await setDoc(userRef, { profileImage: downloadURL }, { merge: true });
+                    console.log('File available at', downloadURL);
+                });
+            }
+        );
+    }
+
+    const resumeUpload = async (event) => {
+
+        const storageRef = ref(storage, `/resume/${event.target.files[0].name}`);
+        const uploadTask = uploadBytesResumable(storageRef, event.target.files[0]);
+
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        // setProgress(progress)
+                        break;
+                }
+            },
+            (error) => {
+                console.log("Failed upload: ", error)
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                    setUserProfile({ ...userProfile, resume: downloadURL })
+                    const userRef = doc(db, 'users', user.uid);
+                    await setDoc(userRef, { resume: downloadURL }, { merge: true });
                     console.log('File available at', downloadURL);
                 });
             }
@@ -276,7 +321,7 @@ const Account = () => {
                                 <div class="field">
                                     <label class="label">First Name</label>
                                     <div class="control">
-                                        <input class="input" type="text" placeholder="Hasan"
+                                        <input class="input" type="text" placeholder="First Name"
                                             value={userProfile.firstName}
                                             onChange={(e) => setUserProfile({ ...userProfile, firstName: e.target.value })} />
                                     </div>
@@ -284,7 +329,7 @@ const Account = () => {
                                 <div class="field">
                                     <label class="label">Last Name</label>
                                     <div class="control">
-                                        <input class="input" type="text" placeholder="Elmi"
+                                        <input class="input" type="text" placeholder="Last Name"
                                             value={userProfile.lastName}
                                             onChange={(e) => setUserProfile({ ...userProfile, lastName: e.target.value })} />
                                     </div>
@@ -416,14 +461,18 @@ const Account = () => {
 
                                 <div className="profile-image">
                                     <div className="resume-preview">
-                                        <AiOutlineFilePdf />
+                                        {userProfile.resume ? (
+                                            <a href={userProfile.resume} className="view-resume-button">View Resume</a>
+                                        ) : (
+                                            <AiOutlineFilePdf />
+                                        )}
                                     </div>
                                 </div>
 
                                 <div className="image-upload">
                                     <div class="file is-boxed">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="resume" />
+                                            <input class="file-input" type="file" name="resume" onChange={resumeUpload} />
                                             <span class="file-cta">
                                                 <span class="file-icon">
                                                     <BiCloudUpload />
@@ -453,6 +502,13 @@ const Account = () => {
                             educationList={educationList}
                             setEducationList={setEducationList}
                         />
+                    )}
+                    {showAccountErrorModal && (
+                        <AccountErrorModal
+                            setErrorMessage={setErrorMessage}
+                            errorMessage={errorMessage}
+                            showAccountErrorModal={showAccountErrorModal}
+                            setShowAccountErrorModal={setShowAccountErrorModal} />
                     )}
                     <div className="save-changes">
                         <button className="button is-link is-outlined" onClick={saveUserProfile}>Save all changes</button>

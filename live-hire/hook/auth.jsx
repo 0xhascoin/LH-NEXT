@@ -83,6 +83,7 @@ export function AuthProvider(props) {
         } else {
             console.log("No such document!");
             await setDoc(doc(db, "users", user.uid), data);
+            router.push('/account')
         }
     }
 
