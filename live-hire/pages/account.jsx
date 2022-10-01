@@ -8,6 +8,7 @@ import Header from '../components/header';
 import WorkExperienceModal from '../components/workExperienceModal';
 import EducationModal from '../components/educationModal';
 import AccountErrorModal from '../components/accountErrorModal';
+import SaveAccountSuccessModal from '../components/saveAccountSuccessModal';
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, storage } from '../firebaseConfig';
 import useAuth from '../hook/auth';
@@ -110,6 +111,8 @@ const Account = () => {
             const userRef = doc(db, 'users', user.uid);
             await setDoc(userRef, userProfile, { merge: true });
             await getUserDetails();
+            setErrorMessage("Your details have been successfully saved.")
+            setShowSaveAccountSuccessModal(true);
         } else {
             // alert("Fill in all fields please.");
             setSavingProfile(false);
@@ -137,6 +140,7 @@ const Account = () => {
     const [showWorkExperienceModal, setShowWorkExperienceModal] = useState(false);
     const [showEducationModal, setShowEducationModal] = useState(false);
     const [showAccountErrorModal, setShowAccountErrorModal] = useState(false);
+    const [showSaveAccountSuccessModal, setShowSaveAccountSuccessModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
 
 
@@ -510,6 +514,13 @@ const Account = () => {
                             errorMessage={errorMessage}
                             showAccountErrorModal={showAccountErrorModal}
                             setShowAccountErrorModal={setShowAccountErrorModal} />
+                    )}
+                    {showSaveAccountSuccessModal && (
+                        <SaveAccountSuccessModal
+                            setErrorMessage={setErrorMessage}
+                            errorMessage={errorMessage}
+                            showSaveAccountSuccessModal={showSaveAccountSuccessModal}
+                            setShowSaveAccountSuccessModal={setShowSaveAccountSuccessModal} />
                     )}
                     <div className="save-changes">
                         <button className="button is-link is-outlined" onClick={saveUserProfile}>Save all changes</button>
