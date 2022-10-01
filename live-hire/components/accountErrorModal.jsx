@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineCloseSquare } from 'react-icons/ai';
 
 const AccountErrorModal = ({ setErrorMessage, errorMessage, setShowAccountErrorModal, showAccountErrorModal }) => {
 
