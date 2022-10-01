@@ -293,9 +293,9 @@ const Account = () => {
                                     You can change it any time you want.
                                 </p>
                             </div>
-                            <div class="field user-type">
-                                <label class="label">User type</label>
-                                <div class="control">
+                            <div className="field user-type">
+                                <label className="label">User type</label>
+                                <div className="control">
                                     <button
                                         className={userProfile.userType === "job seeker" ?
                                             "button job-seeker selected" : "button job-seeker"}
@@ -310,26 +310,26 @@ const Account = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="label">Email</label>
-                                <div class="control">
-                                    <input class="input" type="email" placeholder="hasanelmi678@gmail.com" value={userProfile.email}
+                            <div className="field">
+                                <label className="label">Email</label>
+                                <div className="control">
+                                    <input className="input" type="email" placeholder="hasanelmi678@gmail.com" value={userProfile.email}
                                         onChange={(e) => setUserProfile({ ...userProfile, email: e.target.value })} />
                                 </div>
                             </div>
                             <div className="names-fields">
-                                <div class="field">
-                                    <label class="label">First Name</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="First Name"
+                                <div className="field">
+                                    <label className="label">First Name</label>
+                                    <div className="control">
+                                        <input className="input" type="text" placeholder="First Name"
                                             value={userProfile.firstName}
                                             onChange={(e) => setUserProfile({ ...userProfile, firstName: e.target.value })} />
                                     </div>
                                 </div>
-                                <div class="field">
-                                    <label class="label">Last Name</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Last Name"
+                                <div className="field">
+                                    <label className="label">Last Name</label>
+                                    <div className="control">
+                                        <input className="input" type="text" placeholder="Last Name"
                                             value={userProfile.lastName}
                                             onChange={(e) => setUserProfile({ ...userProfile, lastName: e.target.value })} />
                                     </div>
@@ -338,7 +338,7 @@ const Account = () => {
 
                             <div className="field select-field">
                                 <label className="label">Location</label>
-                                <div class="select control">
+                                <div className="select control">
                                     <select value={userProfile.location} onChange={(e) => setUserProfile({ ...userProfile, location: e.target.value })}>
                                         <option value="">Select your continent</option>
                                         <option value="africa">Africa</option>
@@ -354,11 +354,11 @@ const Account = () => {
 
                             <div className="field skills-field">
                                 <label className="label">Skills</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
+                                <div className="control">
+                                    <input className="input" type="text" placeholder="Skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
                                 </div>
 
-                                <div class="control">
+                                <div className="control">
                                     <button className="button is-primary is-small is-outlined my-2"
                                         onClick={addSkill}>
                                         Add skill
@@ -370,7 +370,8 @@ const Account = () => {
 
                                         <p
                                             className={index % 2 === 0 ? "tag is-warning is-light" : "tag is-link is-light"}
-                                            onClick={() => deleteSkill(skill)}>
+                                            onClick={() => deleteSkill(skill)}
+                                            key={index}>
                                             <span>{toTitleCase(skill)}</span>
                                             <AiOutlineCloseCircle />
                                         </p>
@@ -386,8 +387,8 @@ const Account = () => {
                                 <h2>Work experience</h2>
                             </div>
 
-                            {workExperienceList.map((experience) => (
-                                <div className="experience-container">
+                            {workExperienceList.map((experience, index) => (
+                                <div className="experience-container" key={index}>
                                     <div className="experience-fields">
                                         <p className="company-name">{experience.companyName}</p>
                                         <p className="job-title">{experience.jobTitle}</p>
@@ -409,8 +410,8 @@ const Account = () => {
                                 <h2>Education or certifications</h2>
                             </div>
 
-                            {educationList.map((education) => (
-                                <div className="experience-container">
+                            {educationList.map((education, index) => (
+                                <div className="experience-container" key={index}>
                                     <div className="experience-fields">
                                         <p className="company-name">{education.courseName}</p>
                                         <p className="job-title">{education.universityName}</p>
@@ -440,14 +441,14 @@ const Account = () => {
                             </div>
 
                             <div className="image-upload">
-                                <div class="file is-boxed">
-                                    <label class="file-label">
-                                        <input class="file-input" type="file" name="resume" onChange={profileImageUploaded} />
-                                        <span class="file-cta">
-                                            <span class="file-icon">
+                                <div className="file is-boxed">
+                                    <label className="file-label">
+                                        <input className="file-input" type="file" name="resume" onChange={profileImageUploaded} />
+                                        <span className="file-cta">
+                                            <span className="file-icon">
                                                 <BiCloudUpload />
                                             </span>
-                                            <span class="file-label">
+                                            <span className="file-label">
                                                 Choose a file…
                                             </span>
                                         </span>
@@ -470,14 +471,14 @@ const Account = () => {
                                 </div>
 
                                 <div className="image-upload">
-                                    <div class="file is-boxed">
-                                        <label class="file-label">
-                                            <input class="file-input" type="file" name="resume" onChange={resumeUpload} />
-                                            <span class="file-cta">
-                                                <span class="file-icon">
+                                    <div className="file is-boxed">
+                                        <label className="file-label">
+                                            <input className="file-input" type="file" name="resume" onChange={resumeUpload} />
+                                            <span className="file-cta">
+                                                <span className="file-icon">
                                                     <BiCloudUpload />
                                                 </span>
-                                                <span class="file-label">
+                                                <span className="file-label">
                                                     Choose a file…
                                                 </span>
                                             </span>

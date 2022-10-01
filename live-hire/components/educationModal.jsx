@@ -44,19 +44,19 @@ const EducationModal = ({
   }
 
   return (
-    <div class={showEducationModal ? "modal is-active" : "modal"}>
-      <div class="modal-background" onClick={closeModal}></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Add new education</p>
-          <button class="delete" aria-label="close" onClick={closeModal}></button>
+    <div className={showEducationModal ? "modal is-active" : "modal"}>
+      <div className="modal-background" onClick={closeModal}></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Add new education</p>
+          <button className="delete" aria-label="close" onClick={closeModal}></button>
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
 
-          <div class="field">
-            <label class="label">Course Name</label>
-            <div class="control">
-              <input class="input" type="text"
+          <div className="field">
+            <label className="label">Course Name</label>
+            <div className="control">
+              <input className="input" type="text"
                 placeholder="Name of course completed"
                 value={education.courseName}
                 onChange={(e) => setEducation({ ...education, courseName: e.target.value })}
@@ -64,29 +64,29 @@ const EducationModal = ({
             </div>
           </div>
 
-          <div class="field">
-            <label class="label">University / Organisation Name</label>
-            <div class="control">
-              <input class="input" type="text"
+          <div className="field">
+            <label className="label">University / Organisation Name</label>
+            <div className="control">
+              <input className="input" type="text"
                 placeholder="University name here"
                 value={education.universityName}
                 onChange={(e) => setEducation({ ...education, universityName: e.target.value })} />
             </div>
           </div>
 
-          <div class="field">
-            <label class="label">Start and end date</label>
-            <div class="control dates">
-              <input class="input" type="date" value={education.from} onChange={(e) => setEducation({ ...education, from: e.target.value })} />
-              <input class="input" type="date" value={education.till} onChange={(e) => setEducation({ ...education, till: e.target.value })} />
+          <div className="field">
+            <label className="label">Start and end date</label>
+            <div className="control dates">
+              <input className="input" type="date" value={education.from} onChange={(e) => setEducation({ ...education, from: e.target.value })} />
+              <input className="input" type="date" value={education.till} onChange={(e) => setEducation({ ...education, till: e.target.value })} />
             </div>
           </div>
 
 
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success add is-small" onClick={addEducation}>Add Education</button>
-          <button class="button is-small" onClick={closeModal}>Cancel</button>
+        <footer className="modal-card-foot">
+          <button className="button is-success add is-small" onClick={addEducation}>Add Education</button>
+          <button className="button is-small" onClick={closeModal}>Cancel</button>
         </footer>
       </div>
     </div>

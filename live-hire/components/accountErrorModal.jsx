@@ -7,13 +7,13 @@ const AccountErrorModal = ({ setErrorMessage, errorMessage, setShowAccountErrorM
         setShowAccountErrorModal(false);
     }
     return (
-        <div class={showAccountErrorModal ? "modal account-error is-active": "modal account-error"}>
-            <div class="modal-background" onClick={closeModal}></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <button class="delete" aria-label="close" onClick={closeModal}></button>
+        <div className={showAccountErrorModal ? "modal account-error is-active": "modal account-error"}>
+            <div className="modal-background" onClick={closeModal}></div>
+            <div className="modal-card">
+                <header className="modal-card-head">
+                    <button className="delete" aria-label="close" onClick={closeModal}></button>
                 </header>
-                <section class="modal-card-body">
+                <section className="modal-card-body">
                     <h2 className="message">{errorMessage}</h2>
                 </section>
             </div>
