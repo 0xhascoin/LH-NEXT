@@ -7,7 +7,9 @@ const EducationModal = ({
   showEducationModal,
   setShowEducationModal,
   educationList,
-  setEducationList
+  setEducationList,
+  setErrorMessage,
+  setShowAccountErrorModal
 }) => {
 
   const [education, setEducation] = useState({
@@ -30,8 +32,8 @@ const EducationModal = ({
   }
 
   const addEducation = async () => {
-    if (education.courseName !== "" || education.universityName !== "" ||
-      education.from !== "" || education.till !== "") {
+    if (education.courseName !== "" && education.universityName !== "" &&
+      education.from !== "" && education.till !== "") {
       let tempArr = [...educationList];
       tempArr.push(education)
       setEducationList(tempArr)
@@ -39,7 +41,9 @@ const EducationModal = ({
       await setDoc(userRef, { educationList: tempArr }, { merge: true });
       closeModal()
     } else {
-      alert("Please fill in all values");
+      // alert("Please fill in all values");
+      setErrorMessage("Please fill in all values for education details.");
+      setShowAccountErrorModal(true);
     }
   }
 

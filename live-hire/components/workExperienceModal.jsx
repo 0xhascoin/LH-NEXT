@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
 import useAuth from '../hook/auth';
 
-const WorkExperienceModal = ({ showWorkExperienceModal, setShowWorkExperienceModal, workExperienceList, setWorkExperienceList }) => {
+const WorkExperienceModal = ({ setErrorMessage, setShowAccountErrorModal, showWorkExperienceModal, setShowWorkExperienceModal, workExperienceList, setWorkExperienceList }) => {
   const [workExperience, setWorkExperience] = useState({
     companyName: "",
     jobTitle: "",
@@ -27,8 +27,8 @@ const WorkExperienceModal = ({ showWorkExperienceModal, setShowWorkExperienceMod
   }
 
   const addWorkExperience = async () => {
-    if (workExperience.companyName !== "" || workExperience.jobTitle !== "" ||
-      workExperience.from !== "" || workExperience.till !== "" ||
+    if (workExperience.companyName !== "" && workExperience.jobTitle !== "" &&
+      workExperience.from !== "" && workExperience.till !== "" &&
       workExperience.shortDesc !== "") {
       let tempArr = [...workExperienceList];
       tempArr.push(workExperience)
@@ -37,7 +37,9 @@ const WorkExperienceModal = ({ showWorkExperienceModal, setShowWorkExperienceMod
       await setDoc(userRef, {workExperienceList: tempArr}, { merge: true });
       closeModal()
     } else {
-      alert("Please fill in all values");
+      // alert("Please fill in all values");
+      setErrorMessage("Please fill in all values for work experience details.");
+      setShowAccountErrorModal(true);
     }
   }
 

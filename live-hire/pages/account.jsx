@@ -117,7 +117,7 @@ const Account = () => {
             // alert("Fill in all fields please.");
             setSavingProfile(false);
             setShowAccountErrorModal(true);
-            setErrorMessage("Please fill in all fields.")
+            setErrorMessage("Please fill in all the fields on the form. Including the email, first name, last name and location.")
         }
     }
 
@@ -176,7 +176,7 @@ const Account = () => {
         if (skill === "") {
             // alert("Enter a skill")
             setShowAccountErrorModal(true);
-            setErrorMessage("Please enter a skill")
+            setErrorMessage("Please enter a skill into the input value")
         } else {
             if (!skills.includes(skill.toLowerCase())) {
                 let tempArr = [...skills];
@@ -189,7 +189,7 @@ const Account = () => {
             } else {
                 // alert("Skill already added.")
                 setShowAccountErrorModal(true);
-                setErrorMessage("Skill already added")
+                setErrorMessage(`'${toTitleCase(skill)}' is already added.`)
             }
         }
     }
@@ -201,6 +201,8 @@ const Account = () => {
         const userRef = doc(db, 'users', user.uid);
         await setDoc(userRef, { skills: tempArr }, { merge: true });
         // await getUserDetails();
+        setErrorMessage(`'${skillName}' successfully removed`)
+        setShowSaveAccountSuccessModal(true);
     }
 
 
@@ -235,6 +237,8 @@ const Account = () => {
                     const userRef = doc(db, 'users', user.uid);
                     await setDoc(userRef, { profileImage: downloadURL }, { merge: true });
                     console.log('File available at', downloadURL);
+                    setErrorMessage(`Profile Image successfully uploaded`)
+                    setShowSaveAccountSuccessModal(true);
                 });
             }
         );
@@ -271,6 +275,8 @@ const Account = () => {
                     const userRef = doc(db, 'users', user.uid);
                     await setDoc(userRef, { resume: downloadURL }, { merge: true });
                     console.log('File available at', downloadURL);
+                    setErrorMessage(`Resume successfully uploaded.`)
+                    setShowSaveAccountSuccessModal(true);
                 });
             }
         );
@@ -499,6 +505,8 @@ const Account = () => {
                             setShowWorkExperienceModal={setShowWorkExperienceModal}
                             workExperienceList={workExperienceList}
                             setWorkExperienceList={setWorkExperienceList}
+                            setErrorMessage={setErrorMessage}
+                            setShowAccountErrorModal={setShowAccountErrorModal}
                         />
                     )}
                     {showEducationModal && (
@@ -506,6 +514,8 @@ const Account = () => {
                             setShowEducationModal={setShowEducationModal}
                             educationList={educationList}
                             setEducationList={setEducationList}
+                            setErrorMessage={setErrorMessage}
+                            setShowAccountErrorModal={setShowAccountErrorModal}
                         />
                     )}
                     {showAccountErrorModal && (
