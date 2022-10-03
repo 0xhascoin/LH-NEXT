@@ -15,6 +15,10 @@ import useAuth from '../hook/auth';
 import Loading from '../components/loading';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
+import { HiOutlineMail } from 'react-icons/hi'
+import { GrLocation, GrAddCircle } from 'react-icons/gr'
+import { CgLaptop } from 'react-icons/cg'
+import { BiDetail } from 'react-icons/bi'
 
 
 const Account = () => {
@@ -322,15 +326,22 @@ const Account = () => {
                             </div>
                             <div className="field">
                                 <label className="label">Email</label>
-                                <div className="control">
-                                    <input className="input" type="email" placeholder="hasanelmi678@gmail.com" value={userProfile.email}
+                                <div className="control has-icons-left email-control">
+                                    <span class="icon is-small is-left">
+                                        <HiOutlineMail />
+                                    </span>
+                                    <input className="input" type="email" placeholder="Email address" value={userProfile.email}
                                         onChange={(e) => setUserProfile({ ...userProfile, email: e.target.value })} />
                                 </div>
                             </div>
                             <div className="names-fields">
                                 <div className="field">
                                     <label className="label">First Name</label>
-                                    <div className="control">
+                                    <div className="control has-icons-left">
+                                        <span class="icon is-small is-left">
+
+                                            <BiDetail />
+                                        </span>
                                         <input className="input" type="text" placeholder="First Name"
                                             value={userProfile.firstName}
                                             onChange={(e) => setUserProfile({ ...userProfile, firstName: e.target.value })} />
@@ -338,7 +349,10 @@ const Account = () => {
                                 </div>
                                 <div className="field">
                                     <label className="label">Last Name</label>
-                                    <div className="control">
+                                    <div className="control has-icons-left">
+                                        <span class="icon is-small is-left">
+                                            <BiDetail />
+                                        </span>
                                         <input className="input" type="text" placeholder="Last Name"
                                             value={userProfile.lastName}
                                             onChange={(e) => setUserProfile({ ...userProfile, lastName: e.target.value })} />
@@ -348,30 +362,42 @@ const Account = () => {
 
                             <div className="field select-field">
                                 <label className="label">Location</label>
-                                <div className="select control">
-                                    <select value={userProfile.location} onChange={(e) => setUserProfile({ ...userProfile, location: e.target.value })}>
-                                        <option value="">Select your continent</option>
-                                        <option value="africa">Africa</option>
-                                        <option value="australia">Australia</option>
-                                        <option value="asia">Asia</option>
-                                        <option value="europe">Europe</option>
-                                        <option value="south america">South America</option>
-                                        <option value="united kingdom">United Kingdom</option>
-                                        <option value="united states">United States</option>
-                                    </select>
+                                <div className="select control has-icons-left">
+                                    <span className="icon is-small is-left">
+                                        <GrLocation />
+                                    </span>
+                                    <div className="select">
+
+                                        <select value={userProfile.location} onChange={(e) => setUserProfile({ ...userProfile, location: e.target.value })}>
+                                            <option value="">Select your continent</option>
+                                            <option value="africa">Africa</option>
+                                            <option value="australia">Australia</option>
+                                            <option value="asia">Asia</option>
+                                            <option value="europe">Europe</option>
+                                            <option value="south america">South America</option>
+                                            <option value="united kingdom">United Kingdom</option>
+                                            <option value="united states">United States</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="field skills-field">
                                 <label className="label">Skills</label>
-                                <div className="control">
+                                <div className="control has-icons-left">
+                                    <span class="icon is-small is-left">
+                                        <CgLaptop />
+                                    </span>
                                     <input className="input" type="text" placeholder="Skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
                                 </div>
 
                                 <div className="control">
-                                    <button className="button is-primary is-small is-outlined my-2"
+                                    <button className="button is-primary is-small is-outlined my-2 add-skill-button"
                                         onClick={addSkill}>
-                                        Add skill
+                                        <span class="icon">
+                                            <GrAddCircle />
+                                        </span>
+                                        <span>Add skill</span>
                                     </button>
                                 </div>
 
