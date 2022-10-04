@@ -1,12 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
 .modal {
+  font-family: 'Noto Sans', sans-serif;
+  background-color: white;
+  
 
 
+  .modal-card {
+    // padding: .5rem;
+    // border: 2px solid red;
+    background-color: white;
+
+    .modal-card-head {
+      border: none;
+      display: flex;
+      justify-content: flex-end;
+      background-color: white;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+
+      .delete {
+          // border: 1px solid black;
+          border-radius: 4px;
+      }
+  }
+  }
 
     .modal-card-head {
       // border: 2px solid red;
       background-color: white;
       text-align: center;
+      border: none;
     }
+
+    .modal-heading {
+      // border: 1px solid black;
+      background-color: white;
+      // height: 50px;
+      padding: 1rem;
+      padding-top: 0;
+      font-family: 'Noto Sans', sans-serif;
+
+
+      .company-logo {
+          // border: 1px solid black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+              height: 80px;
+              border-radius: 50%;
+              box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          }
+      }
+
+      .heading-title {
+          // border: 1px solid black;
+          text-align: center;
+          margin-top: 20px;
+
+          h2 {
+              color: black;
+              font-size: 1.3rem;
+              font-weight: 500;
+              font-family: 'Noto Sans', sans-serif;
+
+          }
+
+          p {
+              color: rgb(130, 124, 124);
+              font-size: 1rem;
+              margin: auto;
+              width: 60%;
+              margin-top: 5px;
+              font-family: 'Noto Sans', sans-serif;
+
+          }
+      }
+  }
   
   
   
@@ -15,7 +89,7 @@
       margin-bottom: 10px;
   
         .label {
-          font-family: 'Roboto', sans-serif;
+          font-family: 'Noto Sans', sans-serif;
           font-size: .9rem;
           font-weight: 500;
         }
@@ -24,11 +98,23 @@
           box-shadow: none;
           height: 2.2rem;
           font-size: .9rem;
+          font-family: 'Noto Sans', sans-serif;
+
+        
+        }
+
+        .input {
+          height: 2.9rem;
         }
   
       .control {
         &.dates {
           display: flex;
+          // border: 1px solid black;
+
+          .input:first-child {
+            margin-right: 10px;
+          }
         }
       }
   
@@ -37,6 +123,34 @@
   
     .modal-card-foot {
       // border: 2px solid red;
-      padding: .75rem;
+      padding: 1rem;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color: white;
+      border: none;
+      
+
+      .footer-buttons {
+        // border: 1px solid black;
+        width: 100%;
+        display: flex;
+      justify-content: center;
+      // height: 2.5rem;
+
+      .button {
+          width: 20%;
+          font-size: .8rem;
+          border-radius: 4px;
+          // height: 100%;
+          margin: 10px;
+          padding: 1.2rem;
+          font-family: 'Noto Sans', sans-serif;
+
+
+          &.add {
+            background-color: #011627;
+          }
+      }
+      }
     }
   }

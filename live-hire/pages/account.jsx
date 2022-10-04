@@ -431,14 +431,18 @@ const Account = () => {
                                         <p className="dates">{experience.from} - {experience.till}</p>
                                         <p className="desc">{experience.shortDesc}</p>
                                     </div>
-                                    <button className="button is-danger is-small is-light is-outlined"
+
+                                    <button className="button is-small is-light is-outlined"
                                         onClick={() => deleteExperience(experience.companyName)}>X</button>
                                 </div>
                             ))}
 
-                            <button className="button is-primary is-light is-small is-outlined"
+                            <button className="button is-primary is-light is-small is-outlined add-skill-button"
                                 onClick={() => setShowWorkExperienceModal(true)}>
-                                Add new work experience
+                                <span class="icon">
+                                    <GrAddCircle />
+                                </span>
+                                <span>Add new work experience</span>
                             </button>
 
 
@@ -453,14 +457,17 @@ const Account = () => {
                                         <p className="job-title">{education.universityName}</p>
                                         <p className="dates">{education.from} - {education.till}</p>
                                     </div>
-                                    <button className="button is-danger is-small is-light is-outlined"
+                                    <button className="button is-small is-light is-outlined"
                                         onClick={() => deleteEducation(education.courseName)}>X</button>
                                 </div>
                             ))}
 
-                            <button className="button is-primary is-light is-small is-outlined"
+                            <button className="button is-primary is-light is-small is-outlined add-skill-button"
                                 onClick={() => setShowEducationModal(true)}>
-                                Add new education
+                                <span class="icon">
+                                    <GrAddCircle />
+                                </span>
+                                <span>Add new education</span>
                             </button>
 
 
@@ -499,7 +506,12 @@ const Account = () => {
                                 <div className="profile-image">
                                     <div className="resume-preview">
                                         {userProfile.resume ? (
-                                            <a href={userProfile.resume} className="view-resume-button">View Resume</a>
+                                            <a href={userProfile.resume} className="view-resume-button">
+                                                <div className="icon">
+                                                    <AiOutlineFilePdf />
+                                                </div>
+                                                <span>View Resume</span>
+                                            </a>
                                         ) : (
                                             <AiOutlineFilePdf />
                                         )}

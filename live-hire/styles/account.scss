@@ -10,7 +10,7 @@
   padding: 2rem 1rem;
   background-color: white;
   // height: 90vh;
-  
+
 
   .save-changes {
     // border: 1px solid black;
@@ -21,8 +21,21 @@
 
     .button {
       width: 100%;
+      margin-top: 2rem;
       font-size: .9rem;
       font-family: 'Noto Sans', sans-serif;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      border: none;
+      color: black;
+      padding: 2rem;
+      transition: all .3s ease-in-out;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+      &:hover {
+        background-color: #011627;
+        color: white;
+        box-shadow: none;
+      }
     }
   }
 
@@ -45,16 +58,35 @@
     margin: 0 !important;
     // border: 2px solid blue;
   }
-  
+
   .accounts-container {
     // border: 1px solid red;
     // width: 60%;
     padding: 0.8rem 1.5rem;
     margin: 0;
 
+
+    .add-skill-button {
+      // border: 1px solid #011627;
+      border: none;
+      border-radius: 6px;
+      color: #011627;
+      font-size: .9rem;
+      transition: all .3s ease-in-out;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      margin-top: 1.5rem !important;
+      background-color: white;
+
+      &:hover {
+        background-color: #011627;
+        color: white;
+      }
+    }
+
     .heading {
       // border: 1px solid black;
       margin-bottom: 20px;
+
       h2 {
         font-weight: 500;
         font-family: 'Noto Sans', sans-serif;
@@ -62,7 +94,7 @@
         text-transform: none;
         color: #011627;
       }
-  
+
       p {
         text-transform: none;
         font-family: 'Noto Sans', sans-serif;
@@ -76,13 +108,15 @@
 
     .experience-container {
       // border: 1px solid black;
-      padding: .5rem;
+      padding: .8rem;
       padding-left: 1rem;
-      border-left: 1px solid grey;
+      border-left: 2px solid rgb(235, 235, 235);
       margin-bottom: 20px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
 
       .company-name {
         font-family: 'Noto Sans', sans-serif;
@@ -90,50 +124,68 @@
         color: black;
         font-size: 1.1rem;
       }
-      
+
       .job-title {
         font-family: 'Noto Sans', sans-serif;
         font-weight: 500;
         color: black;
-        font-size: 1rem;
+        font-size: .9rem;
       }
 
       .dates {
         font-family: 'Noto Sans', sans-serif;
-        font-size: .95rem;
+        font-size: .9rem;
         font-weight: 300;
+        margin-top: 9px;
       }
-      
+
       .desc {
         font-family: 'Noto Sans', sans-serif;
-        font-size: .95rem;
+        font-size: .9rem;
       }
-    }
-    
-    .field {
+
+      .button {
         // border: 1px solid black;
+        background-color: white;
+        font-size: .6rem;
+        color: rgb(129, 129, 129);
+        transition: all .3s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
-        .control.has-icons-left {
-          // border: 1px solid black;
-          align-items: center;
-
-          .icon {
-            // border: 1px solid black;
-            height: 100%;
-             margin-right: 30px;
-
-            svg {
-              font-size: 1.2rem;
-            }
-          }
-
-
+        &:hover {
+          background-color: #011627;
+          color: white;
+          box-shadow: none;
         }
+      }
+
+
+    }
+
+    .field {
+      // border: 1px solid black;
+
+      .control.has-icons-left {
+        // border: 1px solid black;
+        align-items: center;
+
+        .icon {
+          // border: 1px solid black;
+          height: 100%;
+          margin-right: 30px;
+
+          svg {
+            font-size: 1.2rem;
+          }
+        }
+
+
+      }
 
 
       &.user-type {
         // border: 1px solid black;
-        
+
 
         .control {
           // border: 1px solid black;
@@ -162,12 +214,13 @@
             &:focus {
               outline: none !important;
             }
-            
-            &.selected, &:hover {
+
+            &.selected,
+            &:hover {
               background-color: #011627;
               color: white;
               // font-weight: bold;
-              
+
             }
 
             &.job-seeker {
@@ -176,7 +229,7 @@
           }
         }
       }
-      
+
 
       .label {
         font-family: 'Noto Sans', sans-serif;
@@ -191,8 +244,8 @@
         font-family: 'Noto Sans', sans-serif;
       }
 
-      
-      }
+
+    }
 
     .names-fields {
       // border: 1px solid black;
@@ -220,7 +273,7 @@
     .select-field {
       // border: 1px solid black;
       margin-top: 10px;
-      
+
       .select {
         // border: 1px solid black;
         width: 100%;
@@ -290,10 +343,12 @@
     .heading {
       // border: 1px solid black;
       margin-bottom: 20px;
+      text-align: center;
+
       h2 {
         font-weight: 500;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1.3rem;
         text-transform: none;
         color: #011627;
       }
@@ -308,16 +363,16 @@
       // border: 1px solid black;
       // height: 50px;
       margin: auto;
-      width: 50%;
+      width: 40%;
       padding: 0;
 
       img {
-        border: 1px solid hsl(0deg, 0%, 86%);
-        padding: 20px;
+        // border: 1px solid hsl(0deg, 0%, 86%);
+        // padding: 5px;
         margin: 0;
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 2.6px;
-        
+
       }
 
       .resume-preview {
@@ -325,15 +380,25 @@
         font-size: 3rem;
         text-align: center;
         color: black;
+        // width: 70%;
 
         .view-resume-button {
-          font-size: .9rem;
+          font-size: .7rem;
           border: 1px solid rgb(193, 193, 193);
           // border: 1px solid red;
           padding: 1rem;
           border-radius: 6px;
           font-weight: 500;
           color: rgb(60, 137, 237);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // border: 1px solid red;
+
+          .icon {
+            font-size: 4rem;
+            margin-right: 10px;
+          }
         }
       }
     }
@@ -343,21 +408,41 @@
       margin: auto;
       width: 80%;
       margin-top: 20px;
+      padding: 10px;
+      
 
       .file {
         // border: 2px solid red;
+        // padding: 10px;
+
+        .file-label {
+          // border: 1px solid blue;
+          // padding: 10px;
+
+          .file-cta {
+            background-color: white;
+            // border: none;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+          
+            .file-icon {
+              font-size: 1rem;
+            }
+          }
+        }
+        
 
         label.file-label {
           // border: 2px solid green;
           border-radius: 4px;
           width: 100%;
           font-size: .8rem;
+          
 
           svg {
             font-size: 2rem;
           }
         }
-        
+
       }
     }
   }
@@ -370,7 +455,7 @@
   .field.user-type {
     .control {
       border: 1px solid red !important;
-      
+
       .button {
         width: 40% !important;
       }
