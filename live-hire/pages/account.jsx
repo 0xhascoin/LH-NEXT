@@ -327,7 +327,7 @@ const Account = () => {
                             <div className="field">
                                 <label className="label">Email</label>
                                 <div className="control has-icons-left email-control">
-                                    <span class="icon is-small is-left">
+                                    <span className="icon is-small is-left">
                                         <HiOutlineMail />
                                     </span>
                                     <input className="input" type="email" placeholder="Email address" value={userProfile.email}
@@ -338,7 +338,7 @@ const Account = () => {
                                 <div className="field">
                                     <label className="label">First Name</label>
                                     <div className="control has-icons-left">
-                                        <span class="icon is-small is-left">
+                                        <span className="icon is-small is-left">
 
                                             <BiDetail />
                                         </span>
@@ -350,7 +350,7 @@ const Account = () => {
                                 <div className="field">
                                     <label className="label">Last Name</label>
                                     <div className="control has-icons-left">
-                                        <span class="icon is-small is-left">
+                                        <span className="icon is-small is-left">
                                             <BiDetail />
                                         </span>
                                         <input className="input" type="text" placeholder="Last Name"
@@ -385,7 +385,7 @@ const Account = () => {
                             <div className="field skills-field">
                                 <label className="label">Skills</label>
                                 <div className="control has-icons-left">
-                                    <span class="icon is-small is-left">
+                                    <span className="icon is-small is-left">
                                         <CgLaptop />
                                     </span>
                                     <input className="input" type="text" placeholder="Skill" value={skill} onChange={(e) => setSkill(e.target.value)} />
@@ -394,7 +394,7 @@ const Account = () => {
                                 <div className="control">
                                     <button className="button is-primary is-small is-outlined my-2 add-skill-button"
                                         onClick={addSkill}>
-                                        <span class="icon">
+                                        <span className="icon">
                                             <GrAddCircle />
                                         </span>
                                         <span>Add skill</span>
@@ -439,7 +439,7 @@ const Account = () => {
 
                             <button className="button is-primary is-light is-small is-outlined add-skill-button"
                                 onClick={() => setShowWorkExperienceModal(true)}>
-                                <span class="icon">
+                                <span className="icon">
                                     <GrAddCircle />
                                 </span>
                                 <span>Add new work experience</span>
@@ -464,7 +464,7 @@ const Account = () => {
 
                             <button className="button is-primary is-light is-small is-outlined add-skill-button"
                                 onClick={() => setShowEducationModal(true)}>
-                                <span class="icon">
+                                <span className="icon">
                                     <GrAddCircle />
                                 </span>
                                 <span>Add new education</span>
