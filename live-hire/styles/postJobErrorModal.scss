@@ -1,9 +1,63 @@
 .post-job-error-modal {
     .modal {
+        
+        
         .modal-card {
             // border: 2px solid red;
             text-align: center;
             border-radius: 3px;
+            
+
+            .post-heading {
+                border: none;
+                // background-color: white;
+                // height: 50px;
+                padding: 1rem;
+                padding-top: 0;
+        
+                &.interview {
+                    margin-bottom: 3rem;
+                    margin-top: 4rem;
+                }
+        
+        
+                .company-logo {
+                    // border: 1px solid black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+        
+                    img {
+                        height: 80px;
+                        border-radius: 50%;
+                        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                    }
+                }
+        
+                .heading-title {
+                    // border: 1px solid black;
+                    text-align: center;
+                    margin-top: 20px;
+        
+                    h2 {
+                        color: black;
+                        font-size: 1.3rem;
+                        font-weight: 500;
+                        font-family: 'Noto Sans', sans-serif;
+        
+                    }
+        
+                    p {
+                        color: rgb(130, 124, 124);
+                        font-size: 1rem;
+                        margin: auto;
+                        width: 60%;
+                        margin-top: 5px;
+                        font-family: 'Noto Sans', sans-serif;
+        
+                    }
+                }
+            }
 
             .icon {
                 // border: 1px solid black;
@@ -27,14 +81,23 @@
 
             .issues {
                 // border: 2px solid red;
+                border-radius: 8px;
+                // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+                // padding: 10px;
+                // text-align: left;
 
                 li {
                     // border: 1px solid red;
+                    font-family: 'Noto Sans', sans-serif;
                     font-size: .9rem;
-                    padding: 1rem;
+                    // padding: 1rem;
                     border-radius: 3px;
-                    margin: 10px;
-                    box-shadow: 0 1px 3px rgba(255, 0, 0, 0.1), 0 1px 2px rgba(255, 0, 0, 0.1);
+                    padding: 10px;
+                    color: black;
+                    margin-bottom: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
                 }
             }
 

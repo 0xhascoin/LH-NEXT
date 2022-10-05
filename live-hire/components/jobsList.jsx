@@ -11,7 +11,7 @@ const JobsList = ({ allJobs }) => {
     const [displayJobs, setDisplayJobs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [maxPages, setMaxPages] = useState(0);
-    const [maxPerPage, setMaxPerPage] = useState(5);
+    const [maxPerPage, setMaxPerPage] = useState(50);
     const [companyDesc, setCompanyDesc] = useState("");
     const router = useRouter()
 
@@ -86,7 +86,7 @@ const JobsList = ({ allJobs }) => {
                                             </>
                                         ) : (
                                             <>
-                                                {parse(job.companyDescription).props.children.props.children.substring(0, 60)}...
+                                                {/* {parse(job.companyDescription).props.children.props.children.substring(0, 60)}... */}
                                             </>
                                         )}
                                     </>

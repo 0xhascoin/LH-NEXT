@@ -5,13 +5,15 @@
 .modal {
   font-family: 'Noto Sans', sans-serif;
   background-color: white;
+  padding: 10px;
   
 
 
   .modal-card {
     // padding: .5rem;
     // border: 2px solid red;
-    // background-color: white;
+    background-color: white;
+    border-radius: 20px;
 
     .modal-card-head {
       border: none;
@@ -108,6 +110,13 @@
         }
   
       .control {
+        display: flex;
+        align-items: center;
+        // border: 1px solid black;
+        .icon {
+          // border: 1px solid black;
+          height: 100%;
+        }
         &.dates {
           display: flex;
           // border: 1px solid black;

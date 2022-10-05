@@ -3,6 +3,7 @@
     .modal {
 
         .modal-card {
+            
 
             .modal-card-body {
 
@@ -64,17 +65,22 @@
                                 // border: 1px solid black;
                                 // height: 10px;
                                 margin-left: 0;
+                                
 
                                 .job-title {
                                     font-size: .9rem;
                                     color: black;
                                     font-weight: 500;
+                                    font-family: 'Noto Sans', sans-serif;
+
                                 }
 
                                 .company-name {
                                     color: gray;
                                     font-weight: 600;
                                     font-size: .8rem;
+                                    font-family: 'Noto Sans', sans-serif;
+
                                 }
                             }
                         }
@@ -115,17 +121,23 @@
                     .job-description {
                         // border: 1px solid black;
                         margin-top: 2rem;
+                        font-family: 'Noto Sans', sans-serif;
+                        
 
                         .heading {
                             font-size: .9rem;
                             color: black;
                             font-weight: 600;
                             margin-bottom: 20px;
+                            font-family: 'Noto Sans', sans-serif;
+
                         }
 
                         p {
                             font-size: .8rem;
                             margin-bottom: 20px;
+                            font-family: 'Noto Sans', sans-serif;
+
                         }
 
                         .parse {
