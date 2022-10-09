@@ -3,21 +3,24 @@ import { GrLocation, GrGlobe, GrFormNextLink } from 'react-icons/gr';
 import { BsBriefcase, BsCalendarDate } from 'react-icons/bs';
 import { BiTimeFive } from 'react-icons/bi';
 import moment from 'moment';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Interview = ({ interview }) => {
   const classToStatus = [
-    ["Today", "tag is-primary is-light"], 
-    ["Finished", "tag is-danger is-light"], 
+    ["Today", "tag is-primary is-light"],
+    ["Finished", "tag is-danger is-light"],
     ["Upcoming", "tag is-info is-light"]
   ]
   const [status, setStatus] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     console.log("Interview Date: ", moment(interview.interviewDate).format('MMMM Do YYYY'));
     let today = moment(new Date()).format("MM-DD-YYYY")
-    if(moment(interview.interviewDate).isSame(today)) {
+    if (moment(interview.interviewDate).isSame(today)) {
       setStatus(0);
-    } else if(moment(interview.interviewDate).isBefore(today)) {
+    } else if (moment(interview.interviewDate).isBefore(today)) {
       setStatus(1)
     } else {
       setStatus(2);
@@ -25,7 +28,7 @@ const Interview = ({ interview }) => {
   }, [])
 
   return (
-    <div className="interview">
+    <div className="interview" onClick={() => router.push(`/lobby/${interview.id}`)}>
       <div className="job-title-container">
         <p>Frontend Developer</p>
         <span className={classToStatus[status][1]}>
