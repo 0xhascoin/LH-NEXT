@@ -13,6 +13,8 @@ import '../styles/search.scss';
 import '../styles/account.scss';
 import '../styles/workExperience.scss';
 import '../styles/accountErrorModal.scss';
+import '../styles/smallLoader.scss';
+import '../styles/manager.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

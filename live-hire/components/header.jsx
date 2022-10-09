@@ -125,7 +125,7 @@ const Header = () => {
                                             Saved jobs
                                         </a>
                                     </Link>
-                                    <Link href="/manage/interviews">
+                                    <Link href="/manager">
                                         <a className="dropdown-item">
                                             Interview Manager
                                         </a>

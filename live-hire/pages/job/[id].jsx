@@ -16,6 +16,7 @@ const Job = () => {
 
 
     const [job, setJob] = useState({});
+    const [today, setToday] = useState(moment(new Date()).format("DD-MM-YYYY"))
     const [loading, setLoading] = useState(false);
     const [userApplied, setUserApplied] = useState(false);
 
@@ -65,6 +66,11 @@ const Job = () => {
         })
     }
 
+    useEffect(() => {
+        console.log("Today: ", today);
+        console.log("interviewDate: ", moment(job.interviewDate).format('DD-MM-YYYY'));
+        console.log("postedDate: ", job.postedDate);
+    }, [])
 
     return (
         <div className="page-container">
@@ -131,6 +137,11 @@ const Job = () => {
                                     <div className="interview">
                                         <p>{moment(`${job.interviewDate} ${job.interviewTime}`).format('MMMM Do YYYY, h:mm a')}</p>
                                     </div>
+                                    {job.timezone &&
+                                        <div className="interview">
+                                            <p>Timezone: {job.timezone}</p>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="buttons has-text-centered">
                                     {userApplied ? (
@@ -142,7 +153,7 @@ const Job = () => {
                                             ) : (
                                                 <button className="button rsvp" onClick={applyToJob}>RSVP Here</button>
                                             )}
-                                            </>
+                                        </>
                                     )}
                                     {user === null || user === undefined && <button className="button disabled">You must login</button>}
                                 </div>

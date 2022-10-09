@@ -56,6 +56,7 @@ const JobPreviewModal = ({ showPreview, setShowPreview, selectedJob }) => {
                                 <h2 className="heading mb-5">Interview Details</h2>
                                 <p>Interview Date: {selectedJob.interviewDate}</p>
                                 <p>Interview Time: {selectedJob.interviewTime}</p>
+                                <p>Timezone: {selectedJob.timezone}</p>
                             </div>
 
                         </div>

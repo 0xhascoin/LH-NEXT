@@ -71,6 +71,7 @@ const JobsList = ({ allJobs }) => {
                         <div className="job-title">
                             {job.jobTitle}
                         </div>
+                        {/* 
                         <div className="desc">
                             <p className="parse">
                                 {typeof (parse(job.companyDescription)) === "string" ? (
@@ -86,13 +87,14 @@ const JobsList = ({ allJobs }) => {
                                             </>
                                         ) : (
                                             <>
-                                                {/* {parse(job.companyDescription).props.children.props.children.substring(0, 60)}... */}
+                                                {parse(job.companyDescription).props.children.props.children.substring(0, 60)}... 
                                             </>
                                         )}
                                     </>
                                 )}
                             </p>
                         </div>
+                         */}
                         <div className="tags-container">
                             <span className="tag is-info is-light">{job.jobType}</span>
                             <span className="tag is-info is-light">{job.jobLevel} Level</span>

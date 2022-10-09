@@ -9,9 +9,12 @@ import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from 'firebase
 import PostJobErrorModal from '../components/postJobErrorModal';
 import PostJobSuccessModal from '../components/postJobSuccessModal';
 import dynamic from "next/dynamic";
+import {tz} from 'moment-timezone';
+import moment from 'moment';
 
 import { BiDetail } from 'react-icons/bi'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
+import SmallLoader from '../components/smallLoader';
 
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
 
@@ -30,10 +33,13 @@ const Post = ({ auth }) => {
         jobSalary: "",
         interviewDate: "",
         interviewTime: "",
+        timezone: tz.guess()
 
     })
+    const [jobID, setJobID] = useState(null);
     const [companyDesc, setCompanyDesc] = useState("");
     const [jobDesc, setJobDesc] = useState("");
+    const [intDate, setIntDate] = useState("");
     const [file, setFile] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [progress, setProgress] = useState(null);
@@ -111,9 +117,11 @@ const Post = ({ auth }) => {
                 jobDescription: job.jobDescription,
                 currency: job.currency,
                 jobSalary: job.jobSalary,
-                interviewDate: job.interviewDate,
+                interviewDate: moment(job.interviewDate).format("MM-DD-YYYY"),
                 interviewTime: job.interviewTime,
-                postedDate: getDate()
+                timezone: job.timezone,
+                postedDate: moment(new Date()).format("MM-DD-YYYY")
+                
             }
 
             // Get the ref of the job you are adding & create it in firebase
@@ -123,6 +131,8 @@ const Post = ({ auth }) => {
 
             // Get the ref of the user in the users collection
             const userRef = doc(db, "users", user.uid);
+
+            setJobID(companyRef.id);
 
 
             // Add the id of the company the user just posted to the jobs array field
@@ -175,6 +185,14 @@ const Post = ({ auth }) => {
         console.log("Job desc: ", jobDesc)
         setJob({ ...job, jobDescription: jobDesc })
     }, [jobDesc])
+    // useEffect(() => {
+    //     if(job.interviewDate !== "") {
+    //         let reverse = moment(job.interviewDate).format("MM-DD-YYYY")
+    //         setIntDate(reverse)
+    //         console.log("Interview date ", reverse)
+    //     }
+
+    // }, [job.interviewDate])
 
 
     return (
@@ -201,18 +219,14 @@ const Post = ({ auth }) => {
                             <input className="input" type="text" placeholder="Your company name" value={job.companyName} onChange={(e) => setJob({ ...job, companyName: e.target.value })} />
                         </div>
                     </div>
-                    {/* <div className="field">
-                        <label className="label">Company Description</label>
-                        <div className="control">
-                            <textarea className="textarea" cols="30" rows="7" placeholder='Write a short description about the culture of your company' value={job.companyDescription} onChange={(e) => setJob({ ...job, companyDescription: e.target.value })}></textarea>
-                        </div>
-                    </div> */}
+
                     <div className="field">
                         <label className="label">Company Description</label>
                         <div className="control">
                             <ReactQuill theme="snow" value={companyDesc} onChange={setCompanyDesc} />
                         </div>
                     </div>
+
                     <div className="field logo-field">
                         <div>
                             <label className="label">Upload your logo</label>
@@ -241,11 +255,12 @@ const Post = ({ auth }) => {
                             )}
                             {progress !== null && progress !== 100 && (
                                 <div className="image-container has-text-centered">
-                                    Loading....
+                                    <SmallLoader />
                                 </div>
                             )}
                         </div>
                     </div>
+
                     <div className="field">
                         <label className="label">Job title</label>
                         <div className="control has-icons-left">
@@ -255,6 +270,7 @@ const Post = ({ auth }) => {
                             <input className="input" type="text" placeholder="Job title" value={job.jobTitle} onChange={(e) => setJob({ ...job, jobTitle: e.target.value })} />
                         </div>
                     </div>
+
                     <div className="field double">
                         <div className="job-type">
                             <label className="label">
@@ -308,12 +324,7 @@ const Post = ({ auth }) => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="field">
-                        <label className="label">Job Description</label>
-                        <div className="control">
-                            <textarea className="textarea" cols="30" rows="7" placeholder='Write a description about your requirements for this role' value={job.jobDescription} onChange={(e) => setJob({ ...job, jobDescription: e.target.value })}></textarea>
-                        </div>
-                    </div> */}
+
                     <div className="field">
                         <label className="label">Job Description</label>
                         <div className="control">
@@ -351,6 +362,7 @@ const Post = ({ auth }) => {
                                         <option value="USD">USD</option>
                                         <option value="EUR">EUR</option>
                                         <option value="GBP">GBP</option>
+                                        <option value="AUD">AUD</option>
                                     </select>
                                 </div>
                             </div>
@@ -397,7 +409,7 @@ const Post = ({ auth }) => {
                 </form>
             </div >
             {postJobError && <PostJobErrorModal job={job} postJobError={postJobError} setPostJobError={setPostJobError} />}
-            {submitted && <PostJobSuccessModal job={job} submitted={submitted} setSubmitted={setSubmitted} />}
+            {submitted && <PostJobSuccessModal job={job} submitted={submitted} setSubmitted={setSubmitted} id={jobID}/>}
             {showPreview && <JobPreviewModal selectedJob={job} setShowPreview={setShowPreview} showPreview={showPreview} />}
         </div >
     )

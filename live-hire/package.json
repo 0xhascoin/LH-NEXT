@@ -13,6 +13,7 @@
     "firebase": "^9.9.3",
     "html-react-parser": "^3.0.4",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
