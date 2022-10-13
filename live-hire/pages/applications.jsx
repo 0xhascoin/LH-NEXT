@@ -95,8 +95,10 @@ const Applications = () => {
                     </div>
                     {showContent && (
                         <div className="select-content">
-                            {usersJobs?.map((job) => (
-                                <div className="select-option" onClick={() => selectJobFromDropdown(job)}>
+                            {usersJobs?.map((job, index) => (
+                                <div className="select-option" 
+                                onClick={() => selectJobFromDropdown(job)}
+                                key={index}>
                                     <h3>{job.jobTitle} - {job.companyName}</h3>
                                     <span className="tag is-light">{job.applications.length}</span>
                                 </div>
@@ -112,6 +114,7 @@ const Applications = () => {
                         displayApplication={displayApplication}
                         showApplicationModal={showApplicationModal}
                         setShowApplicationModal={setShowApplicationModal}
+                        key={index}
                     />
                 ))}
             </div>

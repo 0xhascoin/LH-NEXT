@@ -57,8 +57,8 @@ const ViewApplicationModal = ({
                                     </h2>
                                     <div className="details-container">
                                         <div className="detail">
-                                            {displayApplication.skills?.map((skill) => (
-                                                <p className="tag is-info is-light">
+                                            {displayApplication.skills?.map((skill, index) => (
+                                                <p className="tag is-info is-light" key={index}>
                                                     {toTitleCase(skill)}
                                                 </p>
                                             ))}
@@ -83,8 +83,8 @@ const ViewApplicationModal = ({
                                     <h2 className="section-heading">
                                         Work Experience
                                     </h2>
-                                    {displayApplication?.workExperienceList?.map((exp) => (
-                                        <div className="exp">
+                                    {displayApplication?.workExperienceList?.map((exp, index) => (
+                                        <div className="exp" key={index}>
                                             {console.log("Workexperiencelist: ", displayApplication.workExperienceList)}
                                             <h2>{exp.companyName}</h2>
                                             <h3>{exp.jobTitle}</h3>
@@ -100,8 +100,8 @@ const ViewApplicationModal = ({
                                     <h2 className="section-heading">
                                         Education
                                     </h2>
-                                    {displayApplication?.educationList?.map((edu) => (
-                                        <div className="exp">
+                                    {displayApplication?.educationList?.map((edu, index) => (
+                                        <div className="exp" key={index}>
                                             <h2>{edu.courseName}</h2>
                                             <h3>{edu.universityName}</h3>
                                             <p>{edu.from} - {edu.till}</p>

@@ -128,32 +128,32 @@ const Manager = () => {
 
             {activeTab === 0 && (
                 <div className="interview-container">
-                    {usersJobs?.map((interview) => (
-                        <Interview interview={interview} />
+                    {usersJobs?.map((interview, index) => (
+                        <Interview interview={interview} key={index} />
                     ))}
                 </div>
             )}
 
             {activeTab === 1 && (
                 <div className="interview-container">
-                    {todayJobs?.map((interview) => (
-                        <Interview interview={interview} />
+                    {todayJobs?.map((interview, index) => (
+                        <Interview interview={interview} key={index}/>
                     ))}
                 </div>
             )}
 
             {activeTab === 2 && (
                 <div className="interview-container">
-                    {upcomingJobs?.map((interview) => (
-                        <Interview interview={interview} />
+                    {upcomingJobs?.map((interview, index) => (
+                        <Interview interview={interview} key={index} />
                     ))}
                 </div>
             )}
             
             {activeTab === 3 && (
                 <div className="interview-container">
-                    {finishedJobs?.map((interview) => (
-                        <Interview interview={interview} />
+                    {finishedJobs?.map((interview, index) => (
+                        <Interview interview={interview} key={index} />
                     ))}
                 </div>
             )}

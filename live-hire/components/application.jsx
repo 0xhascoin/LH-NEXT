@@ -40,8 +40,8 @@ const Application = ({ application, setShowApplicationModal, showApplicationModa
             </div>
             <div className="details-container">
                 <div className="detail">
-                    {application.skills?.map((skill) => (
-                        <p className="tag is-info is-light">
+                    {application.skills?.map((skill, index) => (
+                        <p className="tag is-info is-light" key={index}>
                             {toTitleCase(skill)}
                         </p>
                     ))}
