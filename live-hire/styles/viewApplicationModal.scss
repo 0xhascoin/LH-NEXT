@@ -1,0 +1,149 @@
+.view-application-modal {
+    background-color: white;
+      padding: 10px;
+    
+    .modal-card {
+      background-color: white;
+      padding: .8rem;
+      border-radius: 20px;
+      margin: 10px;
+      padding-bottom: 1rem;
+      
+      .modal-card-head {
+        
+        display: flex;
+        justify-content: flex-end;
+        background-color: white;
+              // margin-bottom: 10px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom: none;
+  
+        .delete {
+          border-radius: 4px;
+        }
+      }
+  
+      .modal-card-body {
+        text-align: center;
+        // padding-bottom: 3rem;
+        padding: 0;
+        // border-bottom-left-radius: 20px;
+        // border-bottom-right-radius: 20px;
+        border: none;
+        // border: 1px solid red;
+  
+        .columns {
+          // border: 1px solid black;
+          margin: 0 !important;
+  
+          .column {
+            // border: 1px solid black;
+  
+            &.profile-details {
+              padding: 0;
+  
+              .profile-heading {
+                // border: 1px solid blue;
+                margin: 0;
+                padding: 10px;
+  
+                .profile-logo {
+                  height: 50px;
+                  // border: 1px solid black;
+                  width: 50px;
+                  margin-bottom: 20px;
+  
+                  img {
+                    height: 100%;
+                  }
+                }
+              }
+  
+              .profile-name, .profile-skills, .profile-resume {
+                // border: 1px solid black;
+                margin-top: 10px;
+                text-align: left;
+  
+                h2 {
+                  color: black;
+                  font-family: 'Noto Sans', sans-serif;
+                  font-weight: 500;
+                  font-size: .9rem;
+                }
+  
+                .details-container {
+                  margin-top: 10px;
+  
+                  .tag {
+                    margin-right: 5px;
+                    margin-bottom: 10px;
+                    font-size: .7rem;
+                    font-family: 'Noto Sans', sans-serif;
+                  }
+                }
+  
+                .button {
+                  font-size: .8rem;
+                  font-family: 'Noto Sans', sans-serif;
+                }
+              }
+  
+              .profile-location {
+                display: flex;
+                align-items: center;
+                font-size: .9rem;
+                // margin-right: 10px;
+                // border: 1px solid black;
+                margin-top: 5px;
+          
+                p {
+                  font-family: 'Noto Sans', sans-serif;
+                  margin-left: 5px;
+                }
+              }
+            }
+  
+            &.experience-details {
+              // border: 2px solid red;
+              text-align: left;
+  
+              .exp-section {
+                // border: 1px solid black;
+                
+  
+                .section-heading {
+                  color: black;
+                  margin-bottom: 10px;
+                  font-family: 'Noto Sans', sans-serif;
+                  font-size: .9rem;
+                  font-weight: 500;
+                }
+  
+                .exp {
+                  border-left: 1px solid gray;
+                  margin-bottom: 10px;
+                  font-size: .8rem;
+                  padding-left: 10px;
+  
+                  h2, h3 {
+                    font-size: .9rem;
+                    font-family: 'Noto Sans', sans-serif;
+                    color: black;
+                  }
+  
+                  h2 {
+                    font-weight: 500;
+                  }
+  
+                  h3 {
+                    font-size: .8rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

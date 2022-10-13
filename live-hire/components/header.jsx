@@ -26,7 +26,9 @@ const Header = () => {
     useEffect(() => {
 
         const getUserDetails = async () => {
-            if (error === "" || error === undefined || user.uid !== null) {
+            console.log(user, "USER")
+            if(user === null) return
+            if (user !== null || error === "" || error === undefined) {
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
 

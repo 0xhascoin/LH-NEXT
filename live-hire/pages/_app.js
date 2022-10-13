@@ -15,6 +15,8 @@ import '../styles/workExperience.scss';
 import '../styles/accountErrorModal.scss';
 import '../styles/smallLoader.scss';
 import '../styles/manager.scss';
+import '../styles/application.scss';
+import '../styles/viewApplicationModal.scss';
 import 'react-quill/dist/quill.snow.css';
 
 
