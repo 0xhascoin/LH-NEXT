@@ -51,7 +51,7 @@ const Application = ({ application, setShowApplicationModal, showApplicationModa
             <div className="button-container">
                 <button className="button">
                     <span>Expand</span>
-                    <span class="icon is-small">
+                    <span className="icon is-small">
                         <GrFormNextLink />
                     </span>
                 </button>

@@ -63,7 +63,7 @@ const Interview = ({ interview }) => {
       <div className="button-container">
         <button className="button">
           <span>Go to lobby</span>
-          <span class="icon is-small">
+          <span className="icon is-small">
             <GrFormNextLink />
           </span>
         </button>

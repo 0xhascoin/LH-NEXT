@@ -23,14 +23,14 @@ const ViewApplicationModal = ({
 
     return (
 
-        <div class={showApplicationModal ? "view-application-modal modal is-active" : "view-application-modal modal"}>
-            <div class="modal-background" onClick={closeModal}></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <button class="delete" aria-label="close"
+        <div className={showApplicationModal ? "view-application-modal modal is-active" : "view-application-modal modal"}>
+            <div className="modal-background" onClick={closeModal}></div>
+            <div className="modal-card">
+                <header className="modal-card-head">
+                    <button className="delete" aria-label="close"
                         onClick={closeModal}></button>
                 </header>
-                <section class="modal-card-body">
+                <section className="modal-card-body">
                     <div className="columns">
                         <div className="column profile-details">
                             <div className="profile-heading">
