@@ -17,6 +17,8 @@ import '../styles/smallLoader.scss';
 import '../styles/manager.scss';
 import '../styles/application.scss';
 import '../styles/viewApplicationModal.scss';
+import '../styles/lobbyJob.scss';
+import '../styles/lobbyQueue.scss';
 import 'react-quill/dist/quill.snow.css';
 
 
