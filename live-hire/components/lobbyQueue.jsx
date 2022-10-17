@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebaseConfig';
 import useAuth from '../hook/auth';
@@ -6,17 +6,42 @@ import useAuth from '../hook/auth';
 const profile = "https://infoinspired.com/wp-content/uploads/2013/12/Full-Size-WhatsApp-Profile-Pic-Squre_Round.jpg"
 const profile2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"
 
-const LobbyQueue = ({ job, queueList, setQueueList }) => {
+const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
     const [showJoin, setShowJoin] = useState(true);
     const [userProfile, setUserProfile] = useState({});
     const { user, error } = useAuth();
 
     const joinQueue = async () => {
         await getUserDetails();
-        setShowJoin(false);
+        const jobRef = doc(db, "jobs", job.id);
         let queue = [...queueList];
         queue.push(userProfile);
+        await updateDoc(jobRef, {
+            queue: queue
+        });
         setQueueList(queue)
+        
+        setShowJoin(false);
+    }
+
+    const updateFirebaseJobQueue = async () => {
+        const jobID = job.id;
+        console.log("JOB ID: ", jobID)
+
+    }
+
+
+
+    const leaveQueue = async (userToRemove) => {
+        await getUserDetails();
+        let queue = [...queueList];
+        queue = queue.filter(person => person.id !== userToRemove.id);
+        const jobRef = doc(db, "jobs", job.id);
+        await updateDoc(jobRef, {
+            queue: queue
+        });
+        setQueueList(queue);
+        setShowJoin(true);
     }
 
     useEffect(() => {
@@ -29,6 +54,7 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
                 if (docSnap.exists()) {
                     const { firstName, userType, email, lastName, location, profileImage } = docSnap.data();
                     setUserProfile({
+                        id: user.uid,
                         userType: userType ?? "job seeker",
                         email: email ?? "",
                         firstName: firstName ?? "",
@@ -44,7 +70,16 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
     
         }
         getUserDetails()
+        if(job.queue) {
+            job?.queue?.map((person) => {
+                if(person.id === user.uid) {
+                    console.log("USER IN QUEUE")
+                    setShowJoin(false);
+                }
+            })
+        }
     }, [])
+
 
     const getUserDetails = async () => {
         if (user === null) return
@@ -55,6 +90,7 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
             if (docSnap.exists()) {
                 const { firstName, userType, email, lastName, location, profileImage } = docSnap.data();
                 setUserProfile({
+                    id: user.uid,
                     userType: userType ?? "job seeker",
                     email: email ?? "",
                     firstName: firstName ?? "",
@@ -63,12 +99,18 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
                     profileImage: profileImage ?? null,
                 })
 
+
+
             } else {
                 console.log("No such document!");
             }
         }
-
     }
+
+    useEffect(() => {
+
+    }, [])
+
     return (
         <div className="queue">
             <div className="heading">
@@ -82,7 +124,7 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
                     </button>
                 ) : (
                     <button className="button is-danger"
-                        onClick={() => setShowJoin(true)}>
+                        onClick={() => leaveQueue(userProfile)}>
                         Leave Queue
                     </button>
                 )}
@@ -97,8 +139,8 @@ const LobbyQueue = ({ job, queueList, setQueueList }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {queueList.map((person) => (
-                        <tr>
+                    {queueList.map((person, index) => (
+                        <tr key={index}>
                             <td>
                                 <div className="name">
                                     <img src={person.profileImage} />

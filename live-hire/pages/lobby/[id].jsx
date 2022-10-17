@@ -21,7 +21,7 @@ const Lobby = () => {
     const [job, setJob] = useState({});
 
     const [queueList, setQueueList] = useState([
-        
+
     ])
 
 
@@ -34,7 +34,15 @@ const Lobby = () => {
 
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
-                setJob(docSnap.data())
+                const { queue } = docSnap.data();
+                setJob({ id: id, ...docSnap.data() })
+
+                if(queue) {
+                    setQueueList(queue);
+                } else {
+                    setQueueList([]);
+                }
+
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -44,19 +52,40 @@ const Lobby = () => {
         getJobFromFirebase()
     }, [])
 
+    // useEffect(() => {
+    //     console.log("QUEUE LIST CHANGED")
+    //     const getJobFromFirebase = async () => {
+    //         setLoading(true)
+    //         const docRef = doc(db, "jobs", id);
+    //         const docSnap = await getDoc(docRef);
+
+    //         if (docSnap.exists()) {
+    //             console.log("Document data:", docSnap.data());
+
+    //             setJob({ id: id, ...docSnap.data() })
+                
+    //         } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log("No such document!");
+    //         }
+    //         setLoading(false);
+    //     }
+    //     getJobFromFirebase()
+    // }, [queueList])
+
     return (
         <>
-        <Header />
-        <PageBanner page={'Interview Lobby'} />
+            <Header />
+            <PageBanner page={'Interview Lobby'} />
             <div className="lobby-container">
                 {loading ? (
-                     <Loading />
-                     ) : (
+                    <Loading />
+                ) : (
                     <>
                         <LobbyJob loading={loading} job={job} />
-                        <LobbyQueue job={job} queueList={queueList} setQueueList={setQueueList} />
+                        <LobbyQueue job={job} setJob={setJob} queueList={queueList} setQueueList={setQueueList} />
                     </>
-                )} 
+                )}
             </div>
         </>
     )

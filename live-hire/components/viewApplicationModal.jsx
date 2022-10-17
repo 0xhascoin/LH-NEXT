@@ -31,8 +31,8 @@ const ViewApplicationModal = ({
                         onClick={closeModal}></button>
                 </header>
                 <section className="modal-card-body">
-                    <div className="columns">
-                        <div className="column profile-details">
+                    <div className="c">
+                        <div className="profile-details">
                             <div className="profile-heading">
                                 <div className="profile-logo">
                                     <img src={displayApplication?.profileImage} />
@@ -77,7 +77,7 @@ const ViewApplicationModal = ({
                             </div>
                         </div>
                         {/* {displayApplication.workExperienceList || displayApplication.educationList && ( */}
-                        <div className="column experience-details">
+                        <div className="experience-details">
                             {displayApplication.workExperienceList && (
                                 <div className="exp-section">
                                     <h2 className="section-heading">
