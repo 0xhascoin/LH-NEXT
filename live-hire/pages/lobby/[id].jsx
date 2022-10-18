@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import useAuth from '../../hook/auth';
 import { withProtected } from '../../hook/route';
-import { arrayUnion, collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 import { db } from '../../firebaseConfig';
 
 import Header from '../../components/header';
@@ -50,6 +50,11 @@ const Lobby = () => {
             setLoading(false);
         }
         getJobFromFirebase()
+        onSnapshot(doc(db, "jobs", id), (doc) => {
+            let { queue } = doc.data();
+            setQueueList(queue);
+            console.log("Updated document data: ", queue);
+        });
     }, [])
 
     // useEffect(() => {

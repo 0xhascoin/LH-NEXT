@@ -129,7 +129,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                     </button>
                 )}
             </div>
-            <table class="queue-table">
+            <table className="queue-table">
                 <thead>
                     <tr>
                         <th>Name</th>
