@@ -33,11 +33,11 @@ const Lobby = () => {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
                 const { queue } = docSnap.data();
                 setJob({ id: id, ...docSnap.data() })
 
-                if(queue) {
+                if (queue) {
                     setQueueList(queue);
                 } else {
                     setQueueList([]);
@@ -53,9 +53,34 @@ const Lobby = () => {
         onSnapshot(doc(db, "jobs", id), (doc) => {
             let { queue } = doc.data();
             setQueueList(queue);
-            console.log("Updated document data: ", queue);
+            // console.log("Updated document data: ", queue);
         });
+
+        router.events.on('routeChangeStart', async () => exitingFunction());
+
+
+
+        return () => {
+            router.events.off('routeChangeStart', exitingFunction);
+        };
     }, [])
+
+    const exitingFunction = async () => {
+        console.log("LEAVING -------------------------");
+        await removeFromQueue()
+
+    }
+
+    const removeFromQueue = async () => {
+        let queue = [...queueList];
+        const jobRef = doc(db, "jobs", id);
+        queue = queue.filter(person => person.id !== user.uid);
+        await updateDoc(jobRef, {
+            queue: queue
+        });
+        setQueueList(queue);
+        console.log("QUEUEUEUEUUEUEUE: ", queue)
+    }
 
     // useEffect(() => {
     //     console.log("QUEUE LIST CHANGED")
@@ -68,7 +93,7 @@ const Lobby = () => {
     //             console.log("Document data:", docSnap.data());
 
     //             setJob({ id: id, ...docSnap.data() })
-                
+
     //         } else {
     //             // doc.data() will be undefined in this case
     //             console.log("No such document!");

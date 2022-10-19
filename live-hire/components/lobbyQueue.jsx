@@ -78,6 +78,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                 }
             })
         }
+
     }, [])
 
 
