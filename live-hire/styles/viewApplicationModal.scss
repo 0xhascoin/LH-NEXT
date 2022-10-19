@@ -112,6 +112,7 @@
             p {
               font-family: 'Noto Sans', sans-serif;
               margin-left: 5px;
+              color: black
             }
           }
         }
@@ -141,6 +142,7 @@
               font-size: .8rem;
               padding: 20px;
               border-radius: 8px;
+              color: black;
 
               h2,
               h3 {
@@ -155,6 +157,10 @@
 
               h3 {
                 font-size: .8rem;
+              }
+
+              p {
+                color: black
               }
             }
           }
