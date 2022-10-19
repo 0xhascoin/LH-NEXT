@@ -8,6 +8,7 @@ const profile2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Face
 
 const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
     const [showJoin, setShowJoin] = useState(true);
+    const [hostID, setHostID] = useState(null);
     const [userProfile, setUserProfile] = useState({});
     const { user, error } = useAuth();
 
@@ -20,15 +21,11 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
             queue: queue
         });
         setQueueList(queue)
-        
+
         setShowJoin(false);
     }
 
-    const updateFirebaseJobQueue = async () => {
-        const jobID = job.id;
-        console.log("JOB ID: ", jobID)
-
-    }
+    console.log("JOB DETAILS: ", job);
 
 
 
@@ -45,12 +42,15 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
     }
 
     useEffect(() => {
+        if (job) {
+            setHostID(job.postedBy)
+        }
         const getUserDetails = async () => {
             if (user === null) return
             if (error === "" || error === undefined || user.uid !== null) {
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
-    
+
                 if (docSnap.exists()) {
                     const { firstName, userType, email, lastName, location, profileImage } = docSnap.data();
                     setUserProfile({
@@ -62,17 +62,17 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                         location: location ?? "",
                         profileImage: profileImage ?? null,
                     })
-    
+
                 } else {
                     console.log("No such document!");
                 }
             }
-    
+
         }
         getUserDetails()
-        if(job.queue) {
+        if (job.queue) {
             job?.queue?.map((person) => {
-                if(person.id === user.uid) {
+                if (person.id === user.uid) {
                     console.log("USER IN QUEUE")
                     setShowJoin(false);
                 }
@@ -117,19 +117,22 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
             <div className="heading">
                 <h1>Queue</h1>
             </div>
-            <div className="control-buttons">
-                {showJoin ? (
-                    <button className="button is-primary"
-                        onClick={joinQueue}>
-                        Join Queue
-                    </button>
-                ) : (
-                    <button className="button is-danger"
-                        onClick={() => leaveQueue(userProfile)}>
-                        Leave Queue
-                    </button>
-                )}
-            </div>
+            {hostID !== user.uid && (
+
+                <div className="control-buttons">
+                    {showJoin ? (
+                        <button className="button is-primary"
+                            onClick={joinQueue}>
+                            Join Queue
+                        </button>
+                    ) : (
+                        <button className="button is-danger"
+                            onClick={() => leaveQueue(userProfile)}>
+                            Leave Queue
+                        </button>
+                    )}
+                </div>
+            )}
             <table className="queue-table">
                 <thead>
                     <tr>
@@ -156,9 +159,14 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                             </td>
                             <td>
                                 <div className="call-buttons">
+                                {hostID === user.uid ? (
+                                
                                     <button className="button is-primary is-light">
                                         Call
                                     </button>
+                                ) : (
+                                    <p>Waiting....</p>
+                                )}
                                 </div>
                             </td>
                         </tr>

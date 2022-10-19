@@ -72,15 +72,27 @@ const Lobby = () => {
     }
 
     const removeFromQueue = async () => {
-        let queue = [...queueList];
+        // let queue = [...queueList];
         const jobRef = doc(db, "jobs", id);
-        queue = queue.filter(person => person.id !== user.uid);
-        await updateDoc(jobRef, {
-            queue: queue
-        });
-        setQueueList(queue);
-        console.log("QUEUEUEUEUUEUEUE: ", queue)
+        const docSnap = await getDoc(jobRef);
+        if(docSnap.exists()) {
+            const { queue } = docSnap.data();
+            console.log("Current Queue: ", queue)
+            let newQueue = queue.filter(person => person.id !== user.uid);
+            console.log("Filtered Queue: ", newQueue)
+            await updateDoc(jobRef, {
+                queue: newQueue
+            });
+            setQueueList(newQueue);
+        } else {
+            console.log("No such document!")
+        }
+
     }
+
+    useEffect(() => {
+        console.log("Queue List: ", queueList);
+    }, [queueList])
 
     // useEffect(() => {
     //     console.log("QUEUE LIST CHANGED")
