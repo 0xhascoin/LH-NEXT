@@ -143,13 +143,13 @@ const Filters = ({ searchText, allJobs, displayJobs, setDisplayJobs, setDisplayJ
           {showJobTypeFilter && (
             <div className="filters-list">
               <div className="filter">
-                <label class="checkbox">
+                <label className="checkbox">
                   <input type="checkbox" checked={jobTypeFilter.includes("Full Time") ? true : false} onClick={() => addJobTypeFilter("Full Time")} />
                   Full Time
                 </label>
               </div>
               <div className="filter">
-                <label class="checkbox">
+                <label className="checkbox">
                   <input type="checkbox" checked={jobTypeFilter.includes("Part Time") ? true : false} onClick={() => addJobTypeFilter("Part Time")} />
                   Part Time
                 </label>
@@ -172,19 +172,19 @@ const Filters = ({ searchText, allJobs, displayJobs, setDisplayJobs, setDisplayJ
           {showJobLevelFilter && (
             <div className="filters-list">
               <div className="filter">
-                <label class="checkbox">
+                <label className="checkbox">
                   <input type="checkbox" checked={jobLevelFilter.includes("Junior") ? true : false} onClick={() => addJobLevelFilter("Junior")}/>
                   Junior Level
                 </label>
               </div>
               <div className="filter">
-                <label class="checkbox">
+                <label className="checkbox">
                   <input type="checkbox" checked={jobLevelFilter.includes("Mid") ? true : false} onClick={() => addJobLevelFilter("Mid")} />
                   Mid-level
                 </label>
               </div>
               <div className="filter">
-                <label class="checkbox">
+                <label className="checkbox">
                   <input type="checkbox" checked={jobLevelFilter.includes("Senior") ? true : false} onClick={() => addJobLevelFilter("Senior")} />
                   Senior Level
                 </label>
