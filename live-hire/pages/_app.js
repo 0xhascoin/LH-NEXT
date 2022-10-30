@@ -19,6 +19,12 @@ import '../styles/application.scss';
 import '../styles/viewApplicationModal.scss';
 import '../styles/lobbyJob.scss';
 import '../styles/lobbyQueue.scss';
+import '../styles/jobs.scss';
+import '../styles/filters.scss';
+import '../styles/searchBar.scss';
+import '../styles/searchResult.scss';
+import '../styles/jobsGrid.scss';
+import '../styles/job.scss';
 import 'react-quill/dist/quill.snow.css';
 
 

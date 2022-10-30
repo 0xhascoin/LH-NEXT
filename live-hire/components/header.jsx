@@ -74,7 +74,7 @@ const Header = () => {
 
                         <button className="button navbar-item post-job">Post job</button>
                     </Link>
-                    <Link href={"/"}>
+                    <Link href={"/jobs"}>
                         <a className="navbar-item">
                             Find Jobs
                         </a>

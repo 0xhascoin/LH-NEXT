@@ -1,0 +1,130 @@
+
+.job-container {
+    border: 1px solid #e1e5f2;
+    border-radius: 3px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    cursor:pointer;
+  
+    .job-heading {
+      // border: 1px solid black;
+      display: flex;
+      align-items: flex-start;
+  
+      .job-logo {
+        // border: 1px solid red;
+        height: 40px;
+        margin-right: 10px;
+  
+        img {
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+  
+      .job-title {
+        // border: 1px solid red;
+  
+        h1 {
+          font-size: .8rem;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+          // border: 1px solid black;
+  
+          span {
+            text-decoration: underline;
+            font-weight: 700;
+          }
+  
+          &.company-details {
+            font-size: .7rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  
+  
+  
+    .job-description {
+      // border: 1px solid black;
+      margin-top: 20px;
+      font-family: 'Inter', sans-serif;
+        font-size: .75rem;
+  
+      p {
+        font-family: 'Inter', sans-serif;
+        font-size: .75rem;
+      }
+    }
+  
+    .job-details {
+      // border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+  
+      .salary {
+        // border: 1px solid black;
+  
+        p {
+          font-size: .8rem;
+          font-family: 'Inter', sans-serif;
+  
+          span {
+            font-size: .9rem;
+            font-weight: 700;
+          }
+        }
+      }
+  
+      .posted {
+        // border: 1px solid black;
+  
+        p {
+          font-family: 'Inter', sans-serif;
+          font-size: .8rem;
+        }
+      }
+    }
+  
+    .job-buttons {
+      // border: 1px solid black;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+  
+      .button {
+        width: 45%;
+        font-family: 'Inter', sans-serif;
+        font-size: .8rem;
+        border-radius: 9px;
+        padding: 18px;
+  
+        &.view {
+          font-weight: 500;
+          color: #e1e5f2;
+          background-color: black;
+          border: none;
+          box-shadow: none;
+        }
+  
+        &.apply {
+          background-color: #4361EE;
+          color: white;
+          font-weight: 500;
+          border: none;
+          box-shadow: none;
+          box-shadow: rgba(67, 97, 238, 0.1) 0px 20px 25px -5px, rgba(67, 97, 238, 0.1) 0px 10px 10px -5px;
+        }
+      }
+    }
+  
+  
+  
+  
+  
+    
+  }

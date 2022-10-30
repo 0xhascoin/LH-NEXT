@@ -15,6 +15,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
     const joinQueue = async () => {
         await getUserDetails();
         const jobRef = doc(db, "jobs", job.id);
+        console.log("Queue List: ", queueList)
         let queue = [...queueList];
         queue.push(userProfile);
         await updateDoc(jobRef, {
@@ -40,6 +41,11 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
         setQueueList(queue);
         setShowJoin(true);
     }
+
+    useEffect(() => {
+        console.log("Queue LOADED: ", queueList)
+        if(queueList === undefined) setQueueList([]);
+    }, [])
 
     useEffect(() => {
         if (job) {
@@ -70,6 +76,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
 
         }
         getUserDetails()
+        console.log("Job.Queue: ", job.queue)
         if (job.queue) {
             job?.queue?.map((person) => {
                 if (person.id === user.uid) {
@@ -108,9 +115,6 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
         }
     }
 
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div className="queue">
@@ -143,7 +147,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {queueList.map((person, index) => (
+                    {queueList?.map((person, index) => (
                         <tr key={index}>
                             <td>
                                 <div className="name">

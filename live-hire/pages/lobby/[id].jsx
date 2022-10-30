@@ -10,6 +10,7 @@ import PageBanner from '../../components/pageBanner';
 import Loading from '../../components/loading';
 import LobbyJob from '../../components/lobbyJob';
 import LobbyQueue from '../../components/lobbyQueue';
+import Job from '../../components/job';
 
 
 const Lobby = () => {
@@ -39,8 +40,10 @@ const Lobby = () => {
 
                 if (queue) {
                     setQueueList(queue);
+                    console.log("Queue Exists");
                 } else {
                     setQueueList([]);
+                    console.log("Queue DOENST Exist");
                 }
 
             } else {
@@ -75,15 +78,17 @@ const Lobby = () => {
         // let queue = [...queueList];
         const jobRef = doc(db, "jobs", id);
         const docSnap = await getDoc(jobRef);
-        if(docSnap.exists()) {
+        if (docSnap.exists()) {
             const { queue } = docSnap.data();
             console.log("Current Queue: ", queue)
-            let newQueue = queue.filter(person => person.id !== user.uid);
-            console.log("Filtered Queue: ", newQueue)
-            await updateDoc(jobRef, {
-                queue: newQueue
-            });
-            setQueueList(newQueue);
+            if (queue) {
+                let newQueue = queue?.filter(person => person.id !== user.uid);
+                console.log("Filtered Queue: ", newQueue)
+                await updateDoc(jobRef, {
+                    queue: newQueue
+                });
+                setQueueList(newQueue);
+            }
         } else {
             console.log("No such document!")
         }
@@ -124,7 +129,8 @@ const Lobby = () => {
                     <Loading />
                 ) : (
                     <>
-                        <LobbyJob loading={loading} job={job} />
+                        {/* <LobbyJob loading={loading} job={job} /> */}
+                        <Job job={job} />
                         <LobbyQueue job={job} setJob={setJob} queueList={queueList} setQueueList={setQueueList} />
                     </>
                 )}

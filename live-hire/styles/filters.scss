@@ -1,0 +1,101 @@
+.filters-container {
+  // border: 1px solid #e1e5f2;
+  // height: 100%;
+  padding: 10px;
+  padding-bottom: 0px;
+  background-color: #fefffe;
+
+
+  .filters-heading {
+    // border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    h1 {
+      font-size: .8rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: #2c363f;
+    }
+  }
+
+  .filter-container {
+    // border: 1px solid #e1e5f2;
+    margin-bottom: 30px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    border-radius: 3px;
+
+    .filter-heading {
+      border-bottom: 1px solid #e1e5f2;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: .8rem;
+      font-family: 'Inter', sans-serif;
+      color: #2c363f;
+      font-weight: 600;
+    }
+
+    .filters-list {
+      padding: 5px;
+
+      .filter {
+        // border: 1px solid black;
+        padding: 5px;
+        font-size: .8rem;
+        font-family: 'Inter', sans-serif;
+
+        label {
+          // border: 1px solid red;
+
+          input {
+            border: 1px solid red;
+            margin-right: 5px;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .button.submit-button {
+    font-family: 'Inter', sans-serif;
+    font-size: .8rem;
+    border-radius: 9px;
+    padding: 18px;
+    background-color: #4361EE;
+    color: white;
+    font-weight: 500;
+    border: none;
+    box-shadow: rgba(67, 97, 238, 0.1) 0px 20px 25px -5px, rgba(67, 97, 238, 0.1) 0px 10px 10px -5px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+  }
+
+  .button.clear-button {
+    font-family: 'Inter', sans-serif;
+    font-size: .8rem;
+    border-radius: 9px;
+    padding: 18px;
+    background-color: #4361EE;
+    color: white;
+    font-weight: 500;
+    border: none;
+    box-shadow: rgba(67, 97, 238, 0.1) 0px 20px 25px -5px, rgba(67, 97, 238, 0.1) 0px 10px 10px -5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #e1e5f2;
+    background-color: black;
+    border: none;
+    box-shadow: none;
+  }
+
+
+
+}

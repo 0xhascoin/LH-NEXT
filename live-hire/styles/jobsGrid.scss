@@ -1,0 +1,41 @@
+.jobs-list-container {
+    // padding: 0 0.25rem;
+    //border: 1px solid red;
+    //border-top: none;
+    // background-color: #fafafa;
+    // background-color: transparent;
+    background-color: #fefefe;
+    // border-top: 1px solid #fafafa;
+    padding-bottom: 2rem;
+    // padding-top: 2rem;
+    // border: 1px solid red;
+    
+  
+  
+  
+    .jobs-list {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      padding: 10px;
+      margin: auto;
+      width: 100%;
+      // border: 1px solid black;
+  
+    }
+  
+  
+  }
+  
+  @media(max-width:1111px) {
+    .jobs-list {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  
+  @media(max-width:650px) {
+    .jobs-list {
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }

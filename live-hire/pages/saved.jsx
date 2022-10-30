@@ -2,6 +2,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import Header from '../components/header';
 import JobsList from '../components/jobsList';
+import JobsGrid from '../components/jobsGrid';
 import Loading from '../components/loading';
 import PageBanner from '../components/pageBanner';
 import { db } from '../firebaseConfig';
@@ -45,7 +46,7 @@ const Saved = () => {
         <div>
             <Header />
             <PageBanner page={"Your Job Applications"} />
-            {usersJobs.length ? <JobsList allJobs={usersJobs} /> : (
+            {usersJobs.length ? <JobsGrid displayJobs={usersJobs} /> : (
                 <Loading />
             )}
         </div>
