@@ -4,13 +4,15 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import Hero from "../components/hero";
-import JobsList from "../components/jobsList";
+import JobsGrid from "../components/jobsGrid";
+import Job from "../components/job";
 import Loading from "../components/loading";
 
 
 const Home = () => {
   const [allJobs, setAllJobs] = useState([]);
   const [displayJobs, setDisplayJobs] = useState([]);
+  const [previewJobs, setPreviewJobs] = useState([]);
   const [loadingJobs, setLoadingJobs] = useState(false);
   const { user } = useAuth();
 
@@ -28,6 +30,8 @@ const Home = () => {
       });
       setAllJobs(tempArr);
       setDisplayJobs(tempArr);
+      console.log("TEMP", tempArr.slice(0,6))
+      setPreviewJobs(tempArr.slice(0,6))
       setLoadingJobs(false);
     }
 
@@ -44,9 +48,12 @@ const Home = () => {
     <div className="home">
       <Header />
       {!loadingJobs && <Hero displayJobs={displayJobs} setDisplayJobs={setDisplayJobs} allJobs={allJobs} /> }
-      {!loadingJobs ? <JobsList allJobs={displayJobs} /> : (
+      {loadingJobs ? (
         <Loading />
+      ) : (
+        <JobsGrid displayJobs={previewJobs} />
       )}
+
       
     </div>
   )

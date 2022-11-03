@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { wavy } from '../wavy.png'
 import Search from './search';
 
 const Hero = ({ displayJobs, setDisplayJobs, allJobs }) => {
+  const router = useRouter();
   return (
     <>
       <div className="hero-container">
@@ -19,10 +21,12 @@ const Hero = ({ displayJobs, setDisplayJobs, allJobs }) => {
           where you can <br />
           get your desired job without any hassle & in less time
         </p>
-        <Search displayJobs={displayJobs} setDisplayJobs={setDisplayJobs} allJobs={allJobs}/>
         <p className="hero-subtitle">
           Trusted by over 280+ companies
         </p>
+      </div>
+      <div className="search-button">
+        <button className="button" onClick={() => router.push("/jobs")}>Find Jobs</button>
       </div>
       <div className="browse-section">
         <h2>Browse Popular Jobs</h2>

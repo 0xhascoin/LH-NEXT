@@ -138,6 +138,8 @@ const JobsGrid = ({ displayJobs }) => {
   },
   ]);
 
+  console.log("JOBSGRID, Display Jobs: ", displayJobs)
+
   return (
     <div className="jobs-list-container">
       <div className="jobs-list">
