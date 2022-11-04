@@ -51,6 +51,8 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
         if (job) {
             setHostID(job.postedBy)
         }
+        console.log("Posted By: ", job.postedBy)
+        console.log("Host ID: ", user.uid)
         const getUserDetails = async () => {
             if (user === null) return
             if (error === "" || error === undefined || user.uid !== null) {
@@ -121,7 +123,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
             <div className="heading">
                 <h1>Queue</h1>
             </div>
-            {hostID !== user.uid && (
+            {job.postedBy !== user.uid ? (
 
                 <div className="control-buttons">
                     {showJoin ? (
@@ -136,6 +138,8 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                         </button>
                     )}
                 </div>
+            ) : (
+                <></>
             )}
             <table className="queue-table">
                 <thead>

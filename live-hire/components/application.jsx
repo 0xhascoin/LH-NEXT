@@ -34,8 +34,17 @@ const Application = ({ application, setShowApplicationModal, showApplicationModa
             </div>
             <div className="details-container">
                 <div className="detail">
-                    <GrGlobe />
-                    <p>{toTitleCase(application.location)}</p>
+                    {application?.location ? (
+                        <>
+                            <GrGlobe />
+                            <p>{toTitleCase(application?.location)}</p>
+                        </>
+                    ) : (
+                        <>
+                        <GrGlobe />
+                        <p>Unknown</p>
+                        </>
+                    )}
                 </div>
             </div>
             <div className="details-container">

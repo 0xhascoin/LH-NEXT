@@ -2,13 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .accounts-page {
-  // border: 1px solid black;
+  border-top: 1px solid #e1e5f2;
   // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin: auto;
-  width: 97%;
-  margin-top: 10px;
+  width: 100%;
+  margin-top: 0px;
   padding: 2rem 1rem;
   background-color: white;
+  background-color: #fefffe;
   // height: 90vh;
 
 
@@ -23,7 +24,7 @@
       width: 100%;
       margin-top: 2rem;
       font-size: .9rem;
-      font-family: 'Noto Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
       border: none;
       color: black;
@@ -48,7 +49,7 @@
       color: #10002b;
       font-size: 1.7rem;
       font-weight: 600;
-      font-family: 'Noto Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
 
 
     }
@@ -57,6 +58,8 @@
   .columns {
     margin: 0 !important;
     // border: 2px solid blue;
+    // border: 1px solid #e1e5f2;
+
   }
 
   .accounts-container {
@@ -89,7 +92,7 @@
 
       h2 {
         font-weight: 500;
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.1rem;
         text-transform: none;
         color: #011627;
@@ -97,7 +100,7 @@
 
       p {
         text-transform: none;
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
 
         font-size: .8rem;
         margin-top: 5px;
@@ -119,28 +122,28 @@
 
 
       .company-name {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 600;
         color: black;
         font-size: 1.1rem;
       }
 
       .job-title {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
         color: black;
         font-size: .9rem;
       }
 
       .dates {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: .9rem;
         font-weight: 300;
         margin-top: 9px;
       }
 
       .desc {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: .9rem;
       }
 
@@ -209,7 +212,7 @@
             padding: 1.3rem;
             // border: 1px solid black;
             background-color: #01162710;
-            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
 
             &:focus {
               outline: none !important;
@@ -232,7 +235,7 @@
 
 
       .label {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: .9rem;
         font-weight: 500;
       }
@@ -241,7 +244,7 @@
         box-shadow: none;
         height: 2.9rem;
         font-size: .9rem;
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
       }
 
 
@@ -283,7 +286,7 @@
           box-shadow: none;
           height: 2.9rem;
           font-size: .9rem;
-          font-family: 'Noto Sans', sans-serif;
+          font-family: 'Inter', sans-serif;
         }
       }
     }
@@ -347,7 +350,7 @@
 
       h2 {
         font-weight: 500;
-        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.3rem;
         text-transform: none;
         color: #011627;
@@ -363,7 +366,7 @@
       // border: 1px solid black;
       // height: 50px;
       margin: auto;
-      width: 40%;
+      width: 20%;
       padding: 0;
 
       img {
@@ -371,7 +374,10 @@
         // padding: 5px;
         margin: 0;
         // border-radius: 50%;
-        box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 2.6px;
+        // box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 2.6px;
+        border: 1px solid #e1e5f2;
+        padding: 20px;
+        border-radius: 50%;
 
       }
 
@@ -464,5 +470,5 @@
 }
 
 .input {
-  font-family: 'Noto Sans', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }

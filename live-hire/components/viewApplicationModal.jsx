@@ -43,28 +43,32 @@ const ViewApplicationModal = ({
                                         {displayApplication.lastName}
                                     </h2>
                                 </div>
-                                <div className="profile-location">
-                                    <GrGlobe />
-                                    <p>{toTitleCase(displayApplication.location)}</p>
-                                </div>
+                                {displayApplication?.location && (
+                                    <div className="profile-location">
+                                        <GrGlobe />
+                                        <p>{toTitleCase(displayApplication?.location)}</p>
+                                    </div>
+                                )}
                                 <div className="profile-location">
                                     <HiOutlineMail />
-                                    <p>{toTitleCase(displayApplication.email)}</p>
+                                    <p>{toTitleCase(displayApplication?.email)}</p>
                                 </div>
-                                <div className="profile-skills">
-                                    <h2>
-                                        Skills
-                                    </h2>
-                                    <div className="details-container">
-                                        <div className="detail">
-                                            {displayApplication.skills?.map((skill, index) => (
-                                                <p className="tag is-info is-light" key={index}>
-                                                    {toTitleCase(skill)}
-                                                </p>
-                                            ))}
+                                {displayApplication?.skills && (
+                                    <div className="profile-skills">
+                                        <h2>
+                                            Skills
+                                        </h2>
+                                        <div className="details-container">
+                                            <div className="detail">
+                                                {displayApplication.skills?.map((skill, index) => (
+                                                    <p className="tag is-info is-light" key={index}>
+                                                        {toTitleCase(skill)}
+                                                    </p>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
                                 {displayApplication.resume && (
                                     <div className="profile-resume">
                                         <h2>Resume:</h2>
