@@ -151,7 +151,15 @@ const Job = () => {
                                             {user === null || user === undefined ? (
                                                 <button className="button" onClick={() => router.push("/login")}>Login to apply</button>
                                             ) : (
-                                                <button className="button rsvp" onClick={applyToJob}>RSVP Here</button>
+                                                <>
+                                                    {user.uid !== job.postedBy ? (
+
+                                                        <button className="button rsvp" onClick={applyToJob}>RSVP Here</button>
+                                                    ) : (
+                                                        <></>
+                                                    )}
+
+                                                </>
                                             )}
                                         </>
                                     )}

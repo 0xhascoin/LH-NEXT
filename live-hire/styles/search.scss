@@ -1,75 +1,74 @@
-
 .search-container {
-    border: 1px solid #f8f9fa;
-    border-radius: 8px;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    width: 70%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  
+  border: 1px solid #f8f9fa;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 70%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-  
-    .icon-container {
+
+
+  .icon-container {
+    // border: 1px solid black;
+    padding: 0;
+    margin-left: 10px;
+
+    &.close {
       // border: 1px solid black;
+      z-index: 10;
+      cursor: pointer;
       padding: 0;
-      margin-left: 10px;
+      // width: 70px;
+      margin-right: 10px;
 
-      &.close {
-        // border: 1px solid black;
-        z-index: 10;
-        cursor: pointer;
-        padding: 0;
-        // width: 70px;
-        margin-right: 10px;
-
-        svg {
-          color: rgb(161, 161, 161);
-          margin: 0;
-          // height: 100%;
-          font-size: 1.5rem;
-        }
-        
-      }
-  
       svg {
-        font-size: 1.2rem;
         color: rgb(161, 161, 161);
+        margin: 0;
+        // height: 100%;
+        font-size: 1.5rem;
       }
+
     }
-  
-    .input {
-      height: 100%;
-      border: none;
-      box-shadow: none;
-      font-family: 'Nunito', sans-serif;
-    }
-  
-    .button {
-      height: 100%;
-      width: 20%;
-      max-width: 20%;
-      font-size: .9rem;
-      background-color: #0466c8;
-      color: white;
-      font-weight: 600;
-      font-family: 'Nunito', sans-serif;
-      border-radius: 8px;
-      border: none;
-      // background-color: white;
-  
-      &:hover {
-        color: white;
-        border: none;
-      }
+
+    svg {
+      font-size: 1.2rem;
+      color: rgb(161, 161, 161);
     }
   }
 
-  @media(max-width:550px) {
-    .search-container {
-      width: 95% !important;
+  .input {
+    height: 100%;
+    border: none;
+    box-shadow: none;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .button {
+    height: 100%;
+    width: 20%;
+    max-width: 20%;
+    font-size: .9rem;
+    background-color: #0466c8;
+    color: white;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border-radius: 8px;
+    border: none;
+    // background-color: white;
+
+    &:hover {
+      color: white;
+      border: none;
     }
   }
+}
+
+@media(max-width:550px) {
+  .search-container {
+    width: 95% !important;
+  }
+}

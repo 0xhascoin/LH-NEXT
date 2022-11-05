@@ -17,16 +17,16 @@ const Hero = ({ displayJobs, setDisplayJobs, allJobs }) => {
           Find Your <span>Dream Job</span> Here <br />Easy & Fast
         </h2>
         <p className="hero-subtitle">
-          Finding proper jobs in America can be tough... Jobify is a platform
+          The job hunting process can be long and tough... Live Hire is a platform
           where you can <br />
-          get your desired job without any hassle & in less time
+          apply and then interview all on the same platform, without any hassle & in less time
         </p>
         <p className="hero-subtitle">
-          Trusted by over 280+ companies
+          Trusted by over 80+ companies
         </p>
       </div>
       <div className="search-button">
-        <button className="button" onClick={() => router.push("/jobs")}>Find Jobs</button>
+        <button className="button" onClick={() => router.push("/jobs")}>View All Jobs</button>
       </div>
       <div className="browse-section">
         <h2>Browse Popular Jobs</h2>
