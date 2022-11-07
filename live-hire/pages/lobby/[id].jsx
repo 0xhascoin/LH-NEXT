@@ -67,6 +67,10 @@ const Lobby = () => {
 
         onSnapshot(doc(db, "jobs", id), async (doc) => {
             let { queue, userToCall } = doc.data();
+
+            if(queue) {
+                console.log("Queue changed to: ", queue);
+            }
             setQueueList(queue);
             // console.log("Updated document data: ", queue);
 
@@ -85,6 +89,7 @@ const Lobby = () => {
                 }
             } else {
                 setActive2(false);
+                setActive(false)
             }
         });
 
@@ -92,7 +97,9 @@ const Lobby = () => {
 
 
 
-        return () => {
+        return async () => {
+            console.log("USER NEEDS TO LEAVE THE QUEUE NOW");
+
             router.events.off('routeChangeStart', exitingFunction);
         };
     }, [])
@@ -124,9 +131,6 @@ const Lobby = () => {
 
     }
 
-    useEffect(() => {
-        console.log("Queue List: ", queueList);
-    }, [queueList])
 
 
     const callUser = async (userToCall) => {
@@ -150,9 +154,7 @@ const Lobby = () => {
 
     }
 
-    useEffect(() => {
-        console.log("Calling User changed")
-    }, [callingUser])
+
 
     return (
         <>
@@ -171,7 +173,7 @@ const Lobby = () => {
                 )}
             </div>
             <CallingModal active={active} setActive={setActive} id={id} />
-            <ReceivingModal active2={active2} setActive2={setActive2} job={job} />
+            <ReceivingModal active2={active2} setActive2={setActive2} job={job} setQueueList={setQueueList}/>
             <JoinModal active3={active3} setActive3={setActive3} />
         </>
     )
