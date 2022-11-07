@@ -6,7 +6,7 @@ import useAuth from '../hook/auth';
 const profile = "https://infoinspired.com/wp-content/uploads/2013/12/Full-Size-WhatsApp-Profile-Pic-Squre_Round.jpg"
 const profile2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"
 
-const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
+const LobbyQueue = ({ job, setJob, queueList, setQueueList, callUser }) => {
     const [showJoin, setShowJoin] = useState(true);
     const [hostID, setHostID] = useState(null);
     const [userProfile, setUserProfile] = useState({});
@@ -169,7 +169,7 @@ const LobbyQueue = ({ job, setJob, queueList, setQueueList }) => {
                                 <div className="call-buttons">
                                 {hostID === user.uid ? (
                                 
-                                    <button className="button is-primary is-light">
+                                    <button className="button is-primary is-light" onClick={() => callUser(person.id)}>
                                         Call
                                     </button>
                                 ) : (

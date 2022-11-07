@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+.modal {
+
+
+  .modal-card {
+
+    .modal-card-head {
+      // border: 1px solid black;
+      display: flex;
+      justify-content: flex-end;
+      background-color: white;
+      border-bottom: none;
+    }
+
+    .modal-card-body {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+
+      h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #0d1b2a;
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 300;
+        color: #0d1b2a;
+        
+      }
+
+    }
+
+    .modal-card-foot {
+      background-color: white;
+      border-top: none;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 3rem;
+
+      .accept-call {
+        // margin-top: 20px;
+        background-color: #0d1b2a;
+        color: white;
+        border: 1px solid #0d1b2a;
+        font-size: .9rem;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+
+      }
+
+    }
+  }
+}

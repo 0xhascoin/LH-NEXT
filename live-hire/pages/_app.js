@@ -25,6 +25,8 @@ import '../styles/searchBar.scss';
 import '../styles/searchResult.scss';
 import '../styles/jobsGrid.scss';
 import '../styles/job.scss';
+import '../styles/modals.scss';
+import '../styles/loader.scss';
 import 'react-quill/dist/quill.snow.css';
 
 
