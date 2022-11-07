@@ -5,17 +5,17 @@ const JoinModal = ({ active3, setActive3}) => {
     setActive3(false);
   }
   return (
-    <div class={active3 ? "modal is-active" : "modal"}>
-      <div class="modal-background" onClick={close}></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <button class="delete" aria-label="close" onClick={close}></button>
+    <div className={active3 ? "modal is-active" : "modal"}>
+      <div className="modal-background" onClick={close}></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <button className="delete" aria-label="close" onClick={close}></button>
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
           <h1>User has accepted your call</h1>
           <h2>They are waiting for you to join the interview room</h2>
         </section>
-        <footer class="modal-card-foot">
+        <footer className="modal-card-foot">
           <button className="accept-call button">Join Interview Room</button>
         </footer>
       </div>

@@ -11,17 +11,17 @@ const CallingModal = ({ active, setActive, id }) => {
     await setDoc(jobRef, { userToCall: {} }, { merge: true });
   }
   return (
-    <div class={active ? "modal is-active" : "modal"}>
-      <div class="modal-background" onClick={close}></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <button class="delete" aria-label="close" onClick={close}></button>
+    <div className={active ? "modal is-active" : "modal"}>
+      <div className="modal-background" onClick={close}></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <button className="delete" aria-label="close" onClick={close}></button>
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
           <h1>Calling User</h1>
           <h2>Please wait for them to accept</h2>
         </section>
-        <footer class="modal-card-foot">
+        <footer className="modal-card-foot">
           <Loader />
         </footer>
       </div>

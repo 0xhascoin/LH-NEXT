@@ -19,17 +19,17 @@ const ReceivingModal = ({ active2, setActive2, job }) => {
   }
 
   return (
-    <div class={active2 ? "modal is-active" : "modal"}>
-      <div class="modal-background" onClick={close}></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <button class="delete" aria-label="close" onClick={close}></button>
+    <div className={active2 ? "modal is-active" : "modal"}>
+      <div className="modal-background" onClick={close}></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <button className="delete" aria-label="close" onClick={close}></button>
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
           <h1>Receiving a call</h1>
           <h2>Host is inviting you to start an interview</h2>
         </section>
-        <footer class="modal-card-foot">
+        <footer className="modal-card-foot">
           <button className="accept-call button" onClick={joinRoom}>Join Interview</button>
         </footer>
       </div>
